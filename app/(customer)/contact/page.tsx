@@ -59,7 +59,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-bold text-gray-900 text-lg">Địa chỉ</h3>
-                    <p className="text-gray-600 mt-1">123 Đường Nguyễn Tất Thành, TP. Việt Trì, Tỉnh Phú Thọ</p>
+                    <p className="text-gray-600 mt-1">15 Lê Quang Chiểu, phường Phú Thọ Hoà, TP.HCM</p>
                   </div>
                 </div>
                 
@@ -70,8 +70,8 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-bold text-gray-900 text-lg">Điện thoại</h3>
                     <p className="text-gray-600 mt-1">
-                      Hotline: <a href="tel:02103825678" className="text-[var(--color-primary)] hover:underline">0210 382 5678</a><br />
-                      Zalo: <a href="https://zalo.me/0912345678" className="text-[var(--color-primary)] hover:underline">0912 345 678</a>
+                      Hotline: <a href="tel:0839837891" className="text-[var(--color-primary)] hover:underline">0839 837 891</a><br />
+                      Zalo: <span className="text-gray-500 italic">Đang cập nhật</span>
                     </p>
                   </div>
                 </div>
@@ -83,7 +83,7 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-bold text-gray-900 text-lg">Email</h3>
                     <p className="text-gray-600 mt-1">
-                      <a href="mailto:contact@ptxtravel.com" className="text-[var(--color-primary)] hover:underline">contact@ptxtravel.com</a>
+                      <a href="mailto:info@ptxtravel.com" className="text-[var(--color-primary)] hover:underline">info@ptxtravel.com</a>
                     </p>
                   </div>
                 </div>

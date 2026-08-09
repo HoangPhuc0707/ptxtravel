@@ -40,7 +40,7 @@ export function Footer() {
                 Công ty du lịch uy tín hàng đầu tại Phú Thọ. Chuyên cung cấp tour du lịch trong nước và quốc tế với dịch vụ chuyên nghiệp, giá cạnh tranh.
               </p>
               <div className="flex items-center gap-3">
-                <a href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-[var(--color-primary)] hover:text-white transition-colors" aria-label="Facebook">
+                <a href="https://www.facebook.com/PTXTravel" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-[var(--color-primary)] hover:text-white transition-colors" aria-label="Facebook">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
                 </a>
                 <a href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-[var(--color-primary)] hover:text-white transition-colors" aria-label="Instagram">
@@ -148,11 +148,8 @@ export function Footer() {
 
       {/* Floating Actions */}
       <div className="fixed left-4 bottom-4 md:left-8 md:bottom-8 flex flex-col gap-3 z-50">
-        <a href="tel:02103825678" className="w-12 h-12 md:w-[52px] md:h-[52px] rounded-full bg-[linear-gradient(135deg,#0057B8,#0083FF)] text-white flex items-center justify-center shadow-lg hover:scale-110 hover:shadow-xl transition-all" aria-label="Gọi điện">
+        <a href="tel:0839837891" className="w-12 h-12 md:w-[52px] md:h-[52px] rounded-full bg-[linear-gradient(135deg,#0057B8,#0083FF)] text-white flex items-center justify-center shadow-lg hover:scale-110 hover:shadow-xl transition-all" aria-label="Gọi điện">
           <Phone className="w-5 h-5 md:w-6 md:h-6" />
-        </a>
-        <a href="https://zalo.me/0912345678" target="_blank" rel="noopener noreferrer" className="w-12 h-12 md:w-[52px] md:h-[52px] rounded-full bg-[linear-gradient(135deg,#0068FF,#00A7E1)] text-white flex items-center justify-center shadow-lg hover:scale-110 hover:shadow-xl transition-all font-bold text-xl" aria-label="Zalo">
-          Z
         </a>
       </div>
 

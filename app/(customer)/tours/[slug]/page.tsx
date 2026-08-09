@@ -168,7 +168,7 @@ export default async function TourDetailPage({
               </Button>
               
               <Button variant="outline" size="lg" className="w-full h-14 mt-3" asChild>
-                <a href="tel:02103825678">Tư Vấn Thêm</a>
+                <a href="tel:0839837891">Tư Vấn Thêm</a>
               </Button>
             </div>
           </div>

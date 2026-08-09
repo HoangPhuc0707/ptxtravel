@@ -50,14 +50,20 @@ export function Navbar() {
       >
         <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center group">
+          <Link href="/" className="flex items-center gap-2 md:gap-3 group">
             <Image 
-              src="/assets/Logo/1.png" 
+              src="/assets/Logo/2.png" 
               alt="PTX Travel" 
-              width={200} 
-              height={60} 
-              className="h-10 w-auto object-contain transition-transform group-hover:scale-105"
+              width={64} 
+              height={64} 
+              className="h-10 md:h-12 w-auto object-contain transition-transform group-hover:scale-105"
+              quality={100}
+              priority
             />
+            <div className="flex items-center gap-1.5">
+              <span className="text-xl md:text-2xl font-black text-red-600 tracking-wider">PTX</span>
+              <span className="text-xl md:text-2xl font-bold text-blue-700 tracking-wider">TRAVEL</span>
+            </div>
           </Link>
 
           {/* Desktop Links */}
@@ -84,7 +90,7 @@ export function Navbar() {
           {/* Right Actions */}
           <div className="hidden lg:flex items-center gap-4">
             <Button variant="outline" size="default" className="py-2 px-4 text-sm" asChild>
-              <a href="tel:02103825678">
+              <a href="tel:0839837891">
                 <Phone className="w-4 h-4" /> Hotline
               </a>
             </Button>
@@ -126,8 +132,8 @@ export function Navbar() {
           
           <div className="mt-8 flex flex-col gap-4 pb-8">
             <Button variant="outline" className="w-full justify-center" asChild>
-              <a href="tel:02103825678">
-                <Phone className="w-5 h-5" /> 0210 382 5678
+              <a href="tel:0839837891">
+                <Phone className="w-5 h-5" /> 0839 837 891
               </a>
             </Button>
             <Button variant="red" className="w-full justify-center" asChild>
