@@ -1,10 +1,10 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 
-export async function GET(request: Request, { params }: { params: { id: string } }) {
+export async function GET(request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
     const destination = await prisma.destination.findUnique({
-      where: { id: params.id }
+      where: { id: (await params).id }
     });
     
     if (!destination) {
@@ -17,7 +17,7 @@ export async function GET(request: Request, { params }: { params: { id: string }
   }
 }
 
-export async function PUT(request: Request, { params }: { params: { id: string } }) {
+export async function PUT(request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
     const data = await request.json();
     
@@ -25,7 +25,7 @@ export async function PUT(request: Request, { params }: { params: { id: string }
     const slug = data.slug || data.name.toLowerCase().replace(/ /g, '-').replace(/[^\w-]/g, '');
 
     const destination = await prisma.destination.update({
-      where: { id: params.id },
+      where: { id: (await params).id },
       data: {
         name: data.name,
         slug: slug,
@@ -42,10 +42,10 @@ export async function PUT(request: Request, { params }: { params: { id: string }
   }
 }
 
-export async function DELETE(request: Request, { params }: { params: { id: string } }) {
+export async function DELETE(request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
     await prisma.destination.delete({
-      where: { id: params.id }
+      where: { id: (await params).id }
     });
     
     return NextResponse.json({ message: 'Destination deleted successfully' });

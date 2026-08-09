@@ -460,7 +460,7 @@ export default function TourForm({ initialData = null }: { initialData?: any }) 
                           
                           setIsUploadingGallery(true);
                           try {
-                            const newUrls = [];
+                            let newUrls: string[] = [];
                             for (let i = 0; i < files.length; i++) {
                               const formDataData = new FormData();
                               formDataData.append('file', files[i]);

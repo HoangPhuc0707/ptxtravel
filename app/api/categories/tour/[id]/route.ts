@@ -1,10 +1,10 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 
-export async function GET(request: Request, { params }: { params: { id: string } }) {
+export async function GET(request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
     const category = await prisma.tourCategory.findUnique({
-      where: { id: params.id }
+      where: { id: (await params).id }
     });
     
     if (!category) {
@@ -16,13 +16,13 @@ export async function GET(request: Request, { params }: { params: { id: string }
   }
 }
 
-export async function PUT(request: Request, { params }: { params: { id: string } }) {
+export async function PUT(request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
     const data = await request.json();
     const slug = data.slug || data.name.toLowerCase().replace(/ /g, '-').replace(/[^\w-]/g, '');
 
     const category = await prisma.tourCategory.update({
-      where: { id: params.id },
+      where: { id: (await params).id },
       data: {
         name: data.name,
         slug: slug,
@@ -36,10 +36,10 @@ export async function PUT(request: Request, { params }: { params: { id: string }
   }
 }
 
-export async function DELETE(request: Request, { params }: { params: { id: string } }) {
+export async function DELETE(request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
     await prisma.tourCategory.delete({
-      where: { id: params.id }
+      where: { id: (await params).id }
     });
     return NextResponse.json({ message: 'Category deleted successfully' });
   } catch (error) {
