@@ -8,6 +8,7 @@ export default function TourForm({ initialData = null }: { initialData?: any }) 
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [isUploadingImage, setIsUploadingImage] = useState(false);
+  const [isUploadingGallery, setIsUploadingGallery] = useState(false);
   const [error, setError] = useState('');
 
   const [formData, setFormData] = useState({
@@ -31,6 +32,18 @@ export default function TourForm({ initialData = null }: { initialData?: any }) 
 
   const [includes, setIncludes] = useState<string[]>(
     initialData?.includes ? (typeof initialData.includes === 'string' ? JSON.parse(initialData.includes) : initialData.includes) : []
+  );
+  
+  const [excludes, setExcludes] = useState<string[]>(
+    initialData?.excludes ? (typeof initialData.excludes === 'string' ? JSON.parse(initialData.excludes) : initialData.excludes) : []
+  );
+  
+  const [highlights, setHighlights] = useState<string[]>(
+    initialData?.highlights ? (typeof initialData.highlights === 'string' ? JSON.parse(initialData.highlights) : initialData.highlights) : []
+  );
+  
+  const [images, setImages] = useState<string[]>(
+    initialData?.images ? (typeof initialData.images === 'string' ? JSON.parse(initialData.images) : initialData.images) : []
   );
   
   const [itinerary, setItinerary] = useState<{day: string, title: string, content: string}[]>(
@@ -72,6 +85,30 @@ export default function TourForm({ initialData = null }: { initialData?: any }) 
     setIncludes(includes.filter((_, i) => i !== index));
   };
 
+  const addExclude = () => setExcludes([...excludes, '']);
+  const updateExclude = (index: number, value: string) => {
+    const newExcludes = [...excludes];
+    newExcludes[index] = value;
+    setExcludes(newExcludes);
+  };
+  const removeExclude = (index: number) => setExcludes(excludes.filter((_, i) => i !== index));
+
+  const addHighlight = () => setHighlights([...highlights, '']);
+  const updateHighlight = (index: number, value: string) => {
+    const newHighlights = [...highlights];
+    newHighlights[index] = value;
+    setHighlights(newHighlights);
+  };
+  const removeHighlight = (index: number) => setHighlights(highlights.filter((_, i) => i !== index));
+
+  const addImage = () => setImages([...images, '']);
+  const updateImage = (index: number, value: string) => {
+    const newImages = [...images];
+    newImages[index] = value;
+    setImages(newImages);
+  };
+  const removeImage = (index: number) => setImages(images.filter((_, i) => i !== index));
+
   const addItineraryDay = () => setItinerary([...itinerary, { day: `Ngày ${itinerary.length + 1}`, title: '', content: '' }]);
   const updateItinerary = (index: number, field: string, value: string) => {
     const newItin = [...itinerary];
@@ -91,6 +128,9 @@ export default function TourForm({ initialData = null }: { initialData?: any }) 
       const payload = {
         ...formData,
         includes,
+        excludes,
+        highlights,
+        images,
         itinerary,
         price: Number(formData.price),
         originalPrice: formData.originalPrice ? Number(formData.originalPrice) : null,
@@ -187,25 +227,73 @@ export default function TourForm({ initialData = null }: { initialData?: any }) 
           </div>
 
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-6">
-            <h2 className="text-lg font-bold text-gray-900 border-b border-gray-100 pb-4">Quyền lợi / Tiện ích (Includes)</h2>
+            <h2 className="text-lg font-bold text-gray-900 border-b border-gray-100 pb-4">Điểm nổi bật (Highlights)</h2>
             <div className="space-y-3">
-              {includes.map((inc, idx) => (
+              {highlights.map((hl, idx) => (
                 <div key={idx} className="flex gap-2">
                   <input
                     type="text"
-                    value={inc}
-                    onChange={(e) => updateInclude(idx, e.target.value)}
+                    value={hl}
+                    onChange={(e) => updateHighlight(idx, e.target.value)}
                     className="flex-1 px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
-                    placeholder="VD: Cam kết giá tốt nhất"
+                    placeholder="VD: Chinh phục đỉnh Fansipan"
                   />
-                  <button type="button" onClick={() => removeInclude(idx)} className="p-2 text-red-500 hover:bg-red-50 rounded-lg">
+                  <button type="button" onClick={() => removeHighlight(idx)} className="p-2 text-red-500 hover:bg-red-50 rounded-lg">
                     <Trash2 className="w-5 h-5" />
                   </button>
                 </div>
               ))}
-              <button type="button" onClick={addInclude} className="inline-flex items-center text-sm font-medium text-[var(--color-primary)] hover:text-blue-700">
-                <Plus className="w-4 h-4 mr-1" /> Thêm quyền lợi
+              <button type="button" onClick={addHighlight} className="inline-flex items-center text-sm font-medium text-[var(--color-primary)] hover:text-blue-700">
+                <Plus className="w-4 h-4 mr-1" /> Thêm điểm nổi bật
               </button>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-6">
+              <h2 className="text-lg font-bold text-green-700 border-b border-gray-100 pb-4">Giá bao gồm (Includes)</h2>
+              <div className="space-y-3">
+                {includes.map((inc, idx) => (
+                  <div key={idx} className="flex gap-2">
+                    <input
+                      type="text"
+                      value={inc}
+                      onChange={(e) => updateInclude(idx, e.target.value)}
+                      className="flex-1 px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                      placeholder="VD: Xe đời mới đưa đón"
+                    />
+                    <button type="button" onClick={() => removeInclude(idx)} className="p-2 text-red-500 hover:bg-red-50 rounded-lg">
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  </div>
+                ))}
+                <button type="button" onClick={addInclude} className="inline-flex items-center text-sm font-medium text-green-600 hover:text-green-700">
+                  <Plus className="w-4 h-4 mr-1" /> Thêm quyền lợi
+                </button>
+              </div>
+            </div>
+
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-6">
+              <h2 className="text-lg font-bold text-red-700 border-b border-gray-100 pb-4">Không bao gồm (Excludes)</h2>
+              <div className="space-y-3">
+                {excludes.map((exc, idx) => (
+                  <div key={idx} className="flex gap-2">
+                    <input
+                      type="text"
+                      value={exc}
+                      onChange={(e) => updateExclude(idx, e.target.value)}
+                      className="flex-1 px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                      placeholder="VD: Chi phí cá nhân, Tip"
+                    />
+                    <button type="button" onClick={() => removeExclude(idx)} className="p-2 text-red-500 hover:bg-red-50 rounded-lg">
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  </div>
+                ))}
+                <button type="button" onClick={addExclude} className="inline-flex items-center text-sm font-medium text-red-600 hover:text-red-700">
+                  <Plus className="w-4 h-4 mr-1" /> Thêm mục không bao gồm
+                </button>
+              </div>
             </div>
           </div>
 
@@ -326,6 +414,79 @@ export default function TourForm({ initialData = null }: { initialData?: any }) 
                   className="w-full px-4 py-2 border border-gray-200 rounded-lg text-sm mt-3"
                   placeholder="Hoặc dán URL ảnh trực tiếp vào đây..."
                 />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Thư viện ảnh (Gallery)</label>
+                <div className="space-y-3">
+                  {images.map((img, idx) => (
+                    <div key={idx} className="flex gap-2 items-center">
+                      {img ? (
+                         <div className="w-10 h-10 rounded overflow-hidden shrink-0">
+                           <img src={img} alt="" className="w-full h-full object-cover" />
+                         </div>
+                      ) : (
+                         <div className="w-10 h-10 rounded bg-gray-100 shrink-0"></div>
+                      )}
+                      <input
+                        type="text"
+                        value={img}
+                        onChange={(e) => updateImage(idx, e.target.value)}
+                        className="flex-1 px-3 py-2 border border-gray-200 rounded-lg text-sm"
+                        placeholder="URL hình ảnh phụ..."
+                      />
+                      <button type="button" onClick={() => removeImage(idx)} className="p-2 text-red-500 hover:bg-red-50 rounded-lg">
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
+                  ))}
+                  <div className="flex gap-4 pt-2">
+                    <label className={`inline-flex items-center text-sm font-medium ${isUploadingGallery ? 'text-gray-400 cursor-not-allowed' : 'text-[var(--color-primary)] hover:text-blue-700 cursor-pointer'}`}>
+                      {isUploadingGallery ? (
+                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-gray-400 mr-2"></div>
+                      ) : (
+                        <Plus className="w-4 h-4 mr-1" />
+                      )}
+                      {isUploadingGallery ? 'Đang tải...' : 'Tải ảnh lên'}
+                      <input 
+                        type="file" 
+                        className="hidden" 
+                        accept="image/*"
+                        multiple
+                        disabled={isUploadingGallery}
+                        onChange={async (e) => {
+                          const files = e.target.files;
+                          if (!files || files.length === 0) return;
+                          
+                          setIsUploadingGallery(true);
+                          try {
+                            const newUrls = [];
+                            for (let i = 0; i < files.length; i++) {
+                              const formDataData = new FormData();
+                              formDataData.append('file', files[i]);
+                              const res = await fetch('/api/upload', {
+                                method: 'POST',
+                                body: formDataData
+                              });
+                              if (res.ok) {
+                                const data = await res.json();
+                                newUrls.push(data.secure_url);
+                              }
+                            }
+                            setImages(prev => [...prev, ...newUrls]);
+                          } catch (err) {
+                            alert('Lỗi tải ảnh. Vui lòng thử lại.');
+                          } finally {
+                            setIsUploadingGallery(false);
+                          }
+                        }}
+                      />
+                    </label>
+                    <button type="button" onClick={addImage} className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700">
+                      <Plus className="w-4 h-4 mr-1" /> Thêm bằng URL
+                    </button>
+                  </div>
+                </div>
               </div>
 
               <div className="grid grid-cols-2 gap-4">

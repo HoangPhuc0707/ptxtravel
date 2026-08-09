@@ -90,7 +90,7 @@ export default async function AdminDashboard() {
               <div key={tour.id} className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-lg bg-gray-100 overflow-hidden shrink-0 relative">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={tour.image} alt={tour.title} className="w-full h-full object-cover" />
+                  <img src={tour.image || '/assets/tour_halong.png'} alt={tour.title} className="w-full h-full object-cover" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <h4 className="font-bold text-gray-900 text-sm truncate">{tour.title}</h4>

@@ -2,12 +2,15 @@ import React from 'react';
 import { getTours } from '@/lib/data';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
-import { MapPin, Clock, Star, Users, Check, Calendar } from 'lucide-react';
-import { Badge } from '@/components/ui/Badge';
-import { StickyBookingCTA } from '@/components/tours/StickyBookingCTA';
+import { MapPin, Clock, Star, Check } from 'lucide-react';
 import { Metadata } from 'next';
-import { Button } from '@/components/ui/Button';
 import Link from 'next/link';
+
+// Component imports
+import { TourGallery } from '@/components/tours/TourGallery';
+import { TourTabs } from '@/components/tours/TourTabs';
+import { TourSidebar } from '@/components/tours/TourSidebar';
+import { TourCard } from '@/components/tours/TourCard';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const slug = (await params).slug;
@@ -35,147 +38,127 @@ export default async function TourDetailPage({
     notFound();
   }
 
-  const formatPrice = (price: number | string) => {
-    if (typeof price === 'string') return price;
-    return new Intl.NumberFormat('vi-VN').format(price) + 'đ';
-  };
+  // Fallback data for highlights if empty
+  const defaultHighlights = [
+    "Chinh phục đỉnh Fansipan 3.143m",
+    "Ruộng bậc thang mùa lúa vàng tháng 9",
+    "Trekking bản H'Mông, Dao Đỏ",
+    "Chợ tình Sa Pa",
+    "Tắm thuốc người Dao"
+  ];
+  
+  const highlights = tour.highlights && tour.highlights.length > 0 
+    ? tour.highlights 
+    : defaultHighlights;
 
   return (
-    <>
+    <div className="bg-[#f8f9fa] min-h-screen pb-20">
       {/* Page Hero */}
-      <div className="bg-slate-900 pt-24 pb-16 text-white relative">
-        <div className="absolute inset-0 z-0 opacity-40">
-          <Image src={tour.image} alt={tour.title} fill className="object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent"></div>
+      <div className="pt-24 pb-[60px] text-white relative h-[380px] flex items-end">
+        <div className="absolute inset-0 z-0">
+          <Image src={tour.image || '/assets/tour_halong.png'} alt={tour.title} fill className="object-cover object-[center_30%]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0057b8]/55 to-black/65"></div>
         </div>
-        <div className="container mx-auto px-4 relative z-10">
+        
+        <div className="container mx-auto px-4 relative z-10 w-full">
           <div className="flex flex-col gap-4 max-w-4xl">
-            <div className="flex gap-2">
-              <Badge variant="blue">{tour.category}</Badge>
-              {tour.slots !== undefined && tour.slots !== null && tour.slots < 5 && (
-                <Badge variant="red">Chỉ còn {tour.slots} chỗ</Badge>
-              )}
+            {/* Breadcrumbs */}
+            <div className="flex items-center gap-2 text-sm text-gray-300 font-medium">
+              <Link href="/" className="hover:text-white transition-colors">Trang chủ</Link>
+              <span>›</span>
+              <Link href="/tours" className="hover:text-white transition-colors">Tour Du Lịch</Link>
+              <span>›</span>
+              <span className="text-white truncate font-bold">{tour.title}</span>
             </div>
-            <h1 className="font-heading font-bold text-3xl md:text-5xl leading-tight">
+            
+            <h1 className="font-heading font-extrabold text-[clamp(28px,4vw,48px)] leading-tight mb-2 drop-shadow-[0_2px_12px_rgba(0,0,0,0.3)]">
               {tour.title}
             </h1>
-            <div className="flex flex-wrap items-center gap-6 mt-2 text-slate-300">
-              <div className="flex items-center gap-2">
-                <MapPin className="w-5 h-5 text-[var(--color-primary)]" />
-                <span>{tour.location}</span>
+            
+              <div className="flex flex-wrap items-center gap-3 mt-2 text-white/90 font-medium text-sm md:text-base">
+                <div className="flex items-center gap-1.5">
+                  <MapPin className="w-4 h-4 md:w-5 md:h-5 text-rose-500" />
+                  <span>{tour.location || 'Việt Nam'}</span>
+                </div>
+                <div className="text-white/50">|</div>
+                <div className="flex items-center gap-1.5">
+                  <Clock className="w-4 h-4 md:w-5 md:h-5 text-gray-300" />
+                  <span>{tour.duration}</span>
+                </div>
+                <div className="text-white/50">|</div>
+                <div className="flex items-center gap-1.5 text-yellow-400">
+                  <Star className="w-4 h-4 md:w-5 md:h-5 fill-current" />
+                  <span className="font-bold">{tour.rating}</span>
+                  <span className="text-gray-300 font-normal">({tour.reviews} đánh giá)</span>
+                </div>
               </div>
-              <div className="flex items-center gap-2">
-                <Clock className="w-5 h-5 text-[var(--color-primary)]" />
-                <span>{tour.duration}</span>
-              </div>
-              <div className="flex items-center gap-2 text-amber-400">
-                <Star className="w-5 h-5 fill-current" />
-                <span className="font-bold text-white">{tour.rating}</span>
-                <span className="text-slate-400">({tour.reviews} đánh giá)</span>
-              </div>
-            </div>
           </div>
         </div>
       </div>
 
-      <div className="container mx-auto px-4 md:px-6 py-12">
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
-          {/* Main Content */}
-          <div className="w-full lg:w-2/3">
-            {/* Overview */}
-            <div className="bg-white rounded-2xl border border-gray-100 p-6 md:p-8 mb-8 shadow-sm">
-              <h2 className="font-heading font-bold text-2xl mb-4 text-gray-900">Tổng quan chuyến đi</h2>
-              <p className="text-gray-600 leading-relaxed">
-                {tour.description || "Đây là hành trình tuyệt vời đưa bạn đến những địa danh nổi tiếng, trải nghiệm văn hóa độc đáo và thưởng thức ẩm thực đặc sắc. Với kinh nghiệm tổ chức tour chuyên nghiệp, PTX Travel cam kết mang đến cho bạn một chuyến đi an toàn, thoải mái và trọn vẹn nhất."}
-              </p>
-              
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 pt-8 border-t border-gray-100">
-                <div className="flex flex-col gap-1">
-                  <span className="text-sm text-gray-500">Khởi hành</span>
-                  <strong className="text-gray-900">Hàng tuần</strong>
-                </div>
-                <div className="flex flex-col gap-1">
-                  <span className="text-sm text-gray-500">Thời gian</span>
-                  <strong className="text-gray-900">{tour.duration}</strong>
-                </div>
-                <div className="flex flex-col gap-1">
-                  <span className="text-sm text-gray-500">Phương tiện</span>
-                  <strong className="text-gray-900">Ô tô, Máy bay</strong>
-                </div>
-                <div className="flex flex-col gap-1">
-                  <span className="text-sm text-gray-500">Khách sạn</span>
-                  <strong className="text-gray-900">3 - 4 Sao</strong>
-                </div>
-              </div>
+      {/* Main Container */}
+      <div className="container mx-auto px-4 md:px-6 relative z-20 mt-16 md:mt-20 mb-12">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-10">
+          
+          {/* Main Content (Left Column) */}
+          <div className="w-full lg:w-[65%]">
+            
+            {/* Gallery */}
+            <TourGallery mainImage={tour.image} images={tour.images || []} />
+
+            {/* Highlights */}
+            <div className="bg-[#f0f7ff] border border-[#0057b8]/15 rounded-2xl p-6 md:p-8 mb-8">
+              <h3 className="font-heading font-bold text-[#0057b8] text-[18px] mb-4">
+                ✨ Điểm Nổi Bật
+              </h3>
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 list-none p-0 m-0">
+                {highlights.map((highlight: string, idx: number) => (
+                  <li key={idx} className="flex items-start gap-2 text-[14px] text-gray-700">
+                    <span className="text-[#0057b8] font-bold shrink-0 mt-0.5">✓</span>
+                    <span>{highlight}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            {/* Itinerary */}
-            {tour.itinerary && tour.itinerary.length > 0 && (
-              <div className="bg-white rounded-2xl border border-gray-100 p-6 md:p-8 mb-8 shadow-sm">
-                <h2 className="font-heading font-bold text-2xl mb-6 text-gray-900">Lịch trình chi tiết</h2>
-                <div className="relative border-l-2 border-gray-100 ml-4 lg:ml-6 flex flex-col gap-8">
-                  {tour.itinerary.map((day, idx) => (
-                    <div key={idx} className="relative pl-8">
-                      <div className="absolute w-8 h-8 rounded-full bg-[var(--color-primary-light)] border-4 border-white text-[var(--color-primary)] flex items-center justify-center -left-[17px] top-0 font-bold text-sm shadow-sm">
-                        {idx + 1}
-                      </div>
-                      <h3 className="font-bold text-lg text-[var(--color-primary)] mb-1">{day.day}</h3>
-                      <h4 className="font-semibold text-gray-900 mb-3">{day.title}</h4>
-                      <p className="text-gray-600 leading-relaxed text-sm">{day.content}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
+            {/* Navigation Tabs */}
+            <TourTabs tour={tour} />
+
           </div>
 
-          {/* Sidebar */}
-          <div className="w-full lg:w-1/3">
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-xl p-6 sticky top-24">
-              <div className="text-center pb-6 border-b border-gray-100 mb-6">
-                <div className="text-sm text-gray-500 mb-2">Giá ưu đãi từ</div>
-                <div className="flex items-center justify-center gap-2 mb-1">
-                  <strong className="text-3xl font-extrabold text-[var(--color-red)]">
-                    {formatPrice(tour.price)}
-                  </strong>
-                </div>
-                {tour.originalPrice && (
-                  <div className="text-sm text-gray-400 line-through">
-                    {formatPrice(tour.originalPrice)}
-                  </div>
-                )}
-              </div>
-
-              <div className="flex flex-col gap-4 mb-6">
-                <div className="flex items-center gap-3 text-gray-600">
-                  <Check className="w-5 h-5 text-green-500" />
-                  <span>Cam kết giá tốt nhất</span>
-                </div>
-                <div className="flex items-center gap-3 text-gray-600">
-                  <Check className="w-5 h-5 text-green-500" />
-                  <span>Hỗ trợ tư vấn 24/7</span>
-                </div>
-                <div className="flex items-center gap-3 text-gray-600">
-                  <Check className="w-5 h-5 text-green-500" />
-                  <span>Bảo hiểm du lịch 100%</span>
-                </div>
-              </div>
-
-              <Button variant="red" size="lg" className="w-full h-14" asChild>
-                <Link href={`/booking?tour=${tour.slug}`}>
-                  <Calendar className="w-5 h-5 mr-2" /> Đặt Tour Này
-                </Link>
-              </Button>
-              
-              <Button variant="outline" size="lg" className="w-full h-14 mt-3" asChild>
-                <a href="tel:0839837891">Tư Vấn Thêm</a>
-              </Button>
-            </div>
+          {/* Sidebar (Right Column) */}
+          <div className="w-full lg:w-[35%] relative">
+             <TourSidebar tour={tour} />
           </div>
+
         </div>
       </div>
-
-      <StickyBookingCTA tour={tour} />
-    </>
+      
+      {/* Related Tours */}
+      <div className="container mx-auto px-4 md:px-6 py-20 border-t border-gray-100 mt-10">
+        <div className="text-center mb-10">
+          <div className="flex items-center justify-center gap-4 mb-2">
+            <div className="h-px w-10 bg-[var(--color-primary)]"></div>
+            <span className="text-sm font-bold tracking-widest text-[var(--color-primary)] uppercase">Có thể bạn thích</span>
+            <div className="h-px w-10 bg-[var(--color-primary)]"></div>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-heading font-black text-gray-900">
+            Tour <span className="text-[var(--color-primary)]">Liên Quan</span>
+          </h2>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {tours
+            .filter((t: any) => t.id !== tour.id)
+            .slice(0, 3)
+            .map((relatedTour: any) => (
+              <div key={relatedTour.id}>
+                {/* Fallback import below inside the layout */}
+                <TourCard tour={relatedTour} />
+              </div>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }

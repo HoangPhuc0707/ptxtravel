@@ -4,15 +4,18 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { LayoutDashboard, Map, ShoppingBag, FileText, Users, Settings, LogOut, MessageSquare } from 'lucide-react';
+import { LayoutDashboard, Map, ShoppingBag, FileText, Users, Settings, LogOut, MessageSquare, Mail } from 'lucide-react';
 
 const menuItems = [
   { name: 'Dashboard', href: '/admin', icon: LayoutDashboard },
+  { name: 'Danh mục', href: '/admin/categories', icon: Map },
+  { name: 'Quản lý Điểm đến', href: '/admin/destinations', icon: Map },
   { name: 'Quản lý Tour', href: '/admin/tours', icon: Map },
   { name: 'Quản lý Booking', href: '/admin/bookings', icon: ShoppingBag },
   { name: 'Bài viết (Blog)', href: '/admin/blogs', icon: FileText },
   { name: 'Khách hàng', href: '/admin/customers', icon: Users },
   { name: 'Liên hệ', href: '/admin/contacts', icon: MessageSquare },
+  { name: 'Đăng ký nhận tin', href: '/admin/subscribers', icon: Mail },
   { name: 'Cài đặt', href: '/admin/settings', icon: Settings },
 ];
 

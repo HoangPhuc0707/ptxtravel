@@ -31,7 +31,7 @@ export function TourCard({ tour }: TourCardProps) {
       {/* Image Wrapper */}
       <div className="relative h-56 w-full overflow-hidden">
         <Image
-          src={tour.image}
+          src={tour.image || '/assets/tour_halong.png'}
           alt={tour.title}
           fill
           className="object-cover group-hover:scale-110 transition-transform duration-700"

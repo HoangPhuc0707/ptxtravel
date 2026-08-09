@@ -61,7 +61,7 @@ export default async function AdminToursPage({
                     <div className="flex items-center gap-4">
                       <div className="w-16 h-12 rounded-lg bg-gray-100 overflow-hidden shrink-0 relative border border-gray-200">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={tour.image} alt={tour.title} className="w-full h-full object-cover" />
+                        <img src={tour.image || '/assets/tour_halong.png'} alt={tour.title} className="w-full h-full object-cover" />
                       </div>
                       <div>
                         <div className="font-bold text-gray-900 line-clamp-1">{tour.title}</div>
