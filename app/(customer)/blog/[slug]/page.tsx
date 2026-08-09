@@ -111,7 +111,7 @@ export default async function BlogDetailPage({
 
           {/* Body */}
           <div
-            className="prose prose-lg max-w-none text-gray-700 leading-loose
+            className="tiptap-content prose prose-lg max-w-none text-gray-700 leading-loose
               prose-headings:font-heading prose-headings:font-bold prose-headings:text-gray-900 prose-headings:mt-10 prose-headings:mb-4
               prose-h2:text-2xl prose-h2:border-b prose-h2:border-gray-100 prose-h2:pb-3
               prose-p:mb-5 prose-p:leading-[1.9]

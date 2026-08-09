@@ -14,10 +14,10 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | PTX Travel - Phú Thọ Xanh Tourist',
-    default: 'PTX Travel - Phú Thọ Xanh Tourist | Đặt Tour Du Lịch Uy Tín',
+    template: '%s | PTX Travel - Phú Thọ Xanh Travel',
+    default: 'PTX Travel - Phú Thọ Xanh Travel | Đặt Tour Du Lịch Uy Tín',
   },
-  description: "Công ty du lịch uy tín hàng đầu tại Phú Thọ. Chuyên cung cấp tour du lịch trong nước và quốc tế với dịch vụ chuyên nghiệp, giá cạnh tranh.",
+  description: "Công ty du lịch uy tín hàng đầu tại TP.HCM. Chuyên cung cấp tour du lịch trong nước và quốc tế với dịch vụ chuyên nghiệp, giá cạnh tranh.",
 };
 
 export default function RootLayout({

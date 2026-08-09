@@ -3,6 +3,7 @@
 import React, { useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { Save, ArrowLeft, Upload, X, Bold, Italic, Heading2, List, Link2, Image as ImageIcon, AlignLeft } from 'lucide-react';
+import TiptapEditor from './TiptapEditor';
 
 const CATEGORIES = ['Du lịch', 'Kinh nghiệm', 'Ẩm thực', 'Văn hóa', 'Khám phá', 'Tin tức'];
 
@@ -76,29 +77,8 @@ export default function BlogForm({ initialData, onClose, onSuccess }: BlogFormPr
     }
   };
 
-  const insertAtCursor = (before: string, after = '') => {
-    const ta = contentRef.current;
-    if (!ta) return;
-    const start = ta.selectionStart;
-    const end = ta.selectionEnd;
-    const selected = ta.value.substring(start, end);
-    const newVal = ta.value.substring(0, start) + before + selected + after + ta.value.substring(end);
-    setFormData(prev => ({ ...prev, content: newVal }));
-    setTimeout(() => {
-      ta.focus();
-      ta.setSelectionRange(start + before.length, start + before.length + selected.length);
-    }, 0);
-  };
+  // Tiptap replaces the custom toolbar
 
-  const toolbarButtons = [
-    { icon: Bold, label: 'In đậm', action: () => insertAtCursor('<strong>', '</strong>') },
-    { icon: Italic, label: 'In nghiêng', action: () => insertAtCursor('<em>', '</em>') },
-    { icon: Heading2, label: 'Tiêu đề H2', action: () => insertAtCursor('<h2>', '</h2>') },
-    { icon: List, label: 'Danh sách', action: () => insertAtCursor('<ul>\n  <li>', '</li>\n</ul>') },
-    { icon: Link2, label: 'Link', action: () => insertAtCursor('<a href="URL">', '</a>') },
-    { icon: ImageIcon, label: 'Hình ảnh', action: () => insertAtCursor('<img src="URL" alt="Mô tả" />', '') },
-    { icon: AlignLeft, label: 'Đoạn văn', action: () => insertAtCursor('<p>', '</p>') },
-  ];
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -197,30 +177,9 @@ export default function BlogForm({ initialData, onClose, onSuccess }: BlogFormPr
 
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-2">Nội dung bài viết *</label>
-            <div className="flex items-center gap-1 px-3 py-2 bg-gray-50 border border-gray-200 border-b-0 rounded-t-xl flex-wrap">
-              {toolbarButtons.map(({ icon: Icon, label, action }) => (
-                <button
-                  key={label}
-                  type="button"
-                  onClick={action}
-                  title={label}
-                  className="p-2 text-gray-500 hover:text-gray-900 hover:bg-gray-200 rounded-lg transition-colors"
-                >
-                  <Icon className="w-4 h-4" />
-                </button>
-              ))}
-              <div className="h-4 w-px bg-gray-300 mx-1" />
-              <span className="text-xs text-gray-400 ml-1">Hỗ trợ HTML</span>
-            </div>
-            <textarea
-              ref={contentRef}
-              name="content"
-              value={formData.content}
-              onChange={handleChange}
-              required
-              rows={18}
-              placeholder="<p>Nội dung bài viết của bạn...</p>"
-              className="w-full px-4 py-3 border border-gray-200 rounded-b-xl text-sm text-gray-700 font-mono leading-relaxed focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] resize-y bg-white"
+            <TiptapEditor 
+              value={formData.content} 
+              onChange={(html) => setFormData(prev => ({ ...prev, content: html }))} 
             />
           </div>
         </div>

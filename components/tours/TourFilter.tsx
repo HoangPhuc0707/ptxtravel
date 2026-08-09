@@ -23,24 +23,24 @@ export function TourFilter({ currentCategory, currentSort }: { currentCategory: 
         <h3 className="font-bold text-lg mb-4 text-gray-900 border-b border-gray-100 pb-2">Danh mục</h3>
         <div className="flex flex-col gap-2">
           <FilterRadio 
-            label="Tất cả Tours" 
+            label="Tất cả các Tour" 
             checked={currentCategory === 'all'} 
             onChange={() => updateFilters('category', 'all')} 
           />
           <FilterRadio 
-            label="Tour Việt Nam" 
-            checked={currentCategory === 'vietnam'} 
-            onChange={() => updateFilters('category', 'vietnam')} 
+            label="Tour trong nước" 
+            checked={currentCategory === 'Trong nước'} 
+            onChange={() => updateFilters('category', 'Trong nước')} 
           />
           <FilterRadio 
-            label="Tour Đông Nam Á" 
-            checked={currentCategory === 'southeast-asia'} 
-            onChange={() => updateFilters('category', 'southeast-asia')} 
+            label="Tour Quốc tế" 
+            checked={currentCategory === 'Quốc tế'} 
+            onChange={() => updateFilters('category', 'Quốc tế')} 
           />
           <FilterRadio 
-            label="Tour Quốc Tế" 
-            checked={currentCategory === 'international'} 
-            onChange={() => updateFilters('category', 'international')} 
+            label="Tour theo mùa" 
+            checked={currentCategory === 'Theo mùa'} 
+            onChange={() => updateFilters('category', 'Theo mùa')} 
           />
         </div>
       </div>
@@ -65,6 +65,7 @@ export function TourFilter({ currentCategory, currentSort }: { currentCategory: 
 function FilterRadio({ label, checked, onChange }: { label: string, checked: boolean, onChange: () => void }) {
   return (
     <label className="flex items-center gap-3 cursor-pointer group">
+      <input type="radio" className="hidden" checked={checked} onChange={onChange} />
       <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-colors ${checked ? 'border-[var(--color-primary)]' : 'border-gray-300 group-hover:border-[var(--color-primary-light)]'}`}>
         {checked && <div className="w-2.5 h-2.5 bg-[var(--color-primary)] rounded-full"></div>}
       </div>

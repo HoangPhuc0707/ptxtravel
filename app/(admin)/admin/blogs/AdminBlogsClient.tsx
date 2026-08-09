@@ -48,17 +48,20 @@ export default function AdminBlogsClient({ blogs: initialBlogs }: { blogs: any[]
             <h1 className="text-2xl font-bold text-gray-900">Quản lý Bài Viết</h1>
             <p className="text-gray-500 text-sm mt-1">Quản lý nội dung tin tức, kinh nghiệm du lịch</p>
           </div>
-          <button
-            onClick={() => { setEditingBlog(null); setModal('create'); }}
-            className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-[var(--color-primary)] text-white rounded-lg font-medium hover:bg-blue-700 transition-colors"
-          >
-            <Plus className="w-5 h-5" />
-            Viết Bài Mới
-          </button>
+          {!modal && (
+            <button
+              onClick={() => { setEditingBlog(null); setModal('create'); }}
+              className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-[var(--color-primary)] text-white rounded-lg font-medium hover:bg-blue-700 transition-colors"
+            >
+              <Plus className="w-5 h-5" />
+              Viết Bài Mới
+            </button>
+          )}
         </div>
 
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-          {/* Toolbar */}
+        {!modal && (
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+            {/* Toolbar */}
           <div className="p-4 border-b border-gray-100 flex flex-col sm:flex-row gap-4 items-center justify-between bg-gray-50/50">
             <div className="relative w-full sm:w-80">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
@@ -148,32 +151,24 @@ export default function AdminBlogsClient({ blogs: initialBlogs }: { blogs: any[]
             )}
           </div>
         </div>
-      </div>
+      )}
 
-      {/* Modal */}
+      {/* Inline Form View */}
       {modal && (
-        <div className="fixed inset-0 z-50 flex items-start justify-center p-4 overflow-y-auto">
-          <div className="fixed inset-0 bg-black/40 backdrop-blur-sm" onClick={() => { setModal(null); setEditingBlog(null); }} />
-          <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-5xl my-6 p-6 z-10">
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-xl font-bold text-gray-900">
-                {modal === 'create' ? 'Viết Bài Mới' : 'Chỉnh Sửa Bài Viết'}
-              </h2>
-              <button
-                onClick={() => { setModal(null); setEditingBlog(null); }}
-                className="p-2 text-gray-400 hover:text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-            <BlogForm
-              initialData={modal === 'edit' ? editingBlog : undefined}
-              onClose={() => { setModal(null); setEditingBlog(null); }}
-              onSuccess={handleSuccess}
-            />
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mt-6">
+          <div className="flex items-center justify-between mb-6 pb-4 border-b border-gray-100">
+            <h2 className="text-xl font-bold text-gray-900">
+              {modal === 'create' ? 'Viết Bài Mới' : 'Chỉnh Sửa Bài Viết'}
+            </h2>
           </div>
+          <BlogForm
+            initialData={modal === 'edit' ? editingBlog : undefined}
+            onClose={() => { setModal(null); setEditingBlog(null); }}
+            onSuccess={handleSuccess}
+          />
         </div>
       )}
+    </div>
     </>
   );
 }

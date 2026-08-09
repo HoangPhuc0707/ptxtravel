@@ -23,7 +23,7 @@ export function FeaturedTours() {
 
   const filteredTours = tours.filter(tour => {
     if (filter === 'all') return true;
-    return tour.category === filter;
+    return tour.category?.trim().toLowerCase() === filter.trim().toLowerCase();
   });
 
   return (
@@ -37,9 +37,9 @@ export function FeaturedTours() {
 
         <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
           <FilterBtn active={filter === 'all'} onClick={() => setFilter('all')}>🌍 Tất Cả</FilterBtn>
-          <FilterBtn active={filter === 'vietnam'} onClick={() => setFilter('vietnam')}>🇻🇳 Việt Nam</FilterBtn>
-          <FilterBtn active={filter === 'southeast-asia'} onClick={() => setFilter('southeast-asia')}>🌏 Đông Nam Á</FilterBtn>
-          <FilterBtn active={filter === 'international'} onClick={() => setFilter('international')}>✈️ Quốc Tế</FilterBtn>
+          <FilterBtn active={filter === 'Trong nước'} onClick={() => setFilter('Trong nước')}>🇻🇳 Trong nước</FilterBtn>
+          <FilterBtn active={filter === 'Quốc tế'} onClick={() => setFilter('Quốc tế')}>✈️ Quốc tế</FilterBtn>
+          <FilterBtn active={filter === 'Theo mùa'} onClick={() => setFilter('Theo mùa')}>🌸 Theo mùa</FilterBtn>
         </div>
 
         {loading ? (

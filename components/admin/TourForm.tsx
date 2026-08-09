@@ -338,6 +338,7 @@ export default function TourForm({ initialData = null }: { initialData?: any }) 
                   >
                     <option value="Trong nước">Trong nước</option>
                     <option value="Quốc tế">Quốc tế</option>
+                    <option value="Theo mùa">Theo mùa</option>
                   </select>
                 </div>
                 <div>

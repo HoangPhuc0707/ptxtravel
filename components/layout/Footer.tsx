@@ -37,7 +37,7 @@ export function Footer() {
                 />
               </Link>
               <p className="text-slate-300 text-sm leading-relaxed mb-6">
-                Công ty du lịch uy tín hàng đầu tại Phú Thọ. Chuyên cung cấp tour du lịch trong nước và quốc tế với dịch vụ chuyên nghiệp, giá cạnh tranh.
+                Công ty du lịch uy tín hàng đầu tại TP.HCM. Chuyên cung cấp tour du lịch trong nước và quốc tế với dịch vụ chuyên nghiệp, giá cạnh tranh.
               </p>
               <div className="flex items-center gap-3">
                 <a href="https://www.facebook.com/PTXTravel" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-[var(--color-primary)] hover:text-white transition-colors" aria-label="Facebook">
@@ -59,12 +59,10 @@ export function Footer() {
             <div>
               <h4 className="font-heading font-bold text-xl mb-6">Tour Du Lịch</h4>
               <nav className="flex flex-col gap-3 text-slate-300 text-sm" aria-label="Tour links">
-                <Link href="/tours?category=vietnam" className="hover:text-white hover:translate-x-1 transition-all">Tour Việt Nam</Link>
-                <Link href="/tours?category=southeast-asia" className="hover:text-white hover:translate-x-1 transition-all">Tour Đông Nam Á</Link>
-                <Link href="/tours?category=international" className="hover:text-white hover:translate-x-1 transition-all">Tour Châu Âu</Link>
-                <Link href="/tours?category=international" className="hover:text-white hover:translate-x-1 transition-all">Tour Nhật Bản</Link>
-                <Link href="/tours" className="hover:text-white hover:translate-x-1 transition-all">Tour Honeymoon</Link>
-                <Link href="/tours" className="hover:text-white hover:translate-x-1 transition-all">Tour Gia Đình</Link>
+                <Link href="/tours" className="hover:text-white hover:translate-x-1 transition-all">Tất cả các Tour</Link>
+                <Link href="/tours?category=Trong%20nước" className="hover:text-white hover:translate-x-1 transition-all">Tour trong nước</Link>
+                <Link href="/tours?category=Quốc%20tế" className="hover:text-white hover:translate-x-1 transition-all">Tour Quốc tế</Link>
+                <Link href="/tours?category=Theo%20mùa" className="hover:text-white hover:translate-x-1 transition-all">Tour theo mùa</Link>
               </nav>
             </div>
 
@@ -128,7 +126,7 @@ export function Footer() {
                 </button>
               </form>
               <div className="mt-8 text-xs text-slate-500 flex flex-col gap-2">
-                <p>GCNKD: 2600000XXX | Sở KHĐT tỉnh Phú Thọ</p>
+                <p>GCNKD: 2600000XXX | Sở KHĐT TP.HCM</p>
                 <p>GPKD Lữ Hành Quốc Tế: 01-GPLHQT-XXX</p>
               </div>
             </div>
@@ -136,7 +134,7 @@ export function Footer() {
 
           {/* Footer Bottom */}
           <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-slate-400 text-sm">© 2026 PTX Travel — Phú Thọ Xanh Tourist. Bảo lưu mọi quyền.</p>
+            <p className="text-slate-400 text-sm">© 2026 PTX Travel — Phú Thọ Xanh Travel. All rights reserved. Designed by Nguyễn Hoàng Phúc.</p>
             <div className="flex flex-wrap gap-4 text-sm text-slate-400">
               <Link href="#" className="hover:text-white transition-colors">Chính Sách Bảo Mật</Link>
               <Link href="#" className="hover:text-white transition-colors">Điều Khoản</Link>

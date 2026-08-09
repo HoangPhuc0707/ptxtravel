@@ -22,7 +22,7 @@ export default async function ToursPage({
   let tours = await getTours();
 
   if (category && category !== 'all') {
-    tours = tours.filter(t => t.category === category);
+    tours = tours.filter(t => t.category?.trim().toLowerCase() === category.trim().toLowerCase());
   }
 
   if (sort === 'price-asc') {
