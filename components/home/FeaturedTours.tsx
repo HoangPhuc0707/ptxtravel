@@ -30,16 +30,16 @@ export function FeaturedTours() {
     <section className="section bg-white" id="featured-tours">
       <div className="container mx-auto px-4 md:px-6">
         <SectionHeader 
-          label="Tour Nổi Bật"
-          title={<>Những <span className="bg-clip-text text-transparent bg-[linear-gradient(135deg,var(--color-primary)_0%,#0083FF_100%)]">Hành Trình</span> Đáng Nhớ</>}
+          label="Tour nổi bật"
+          title={<>Những <span className="bg-clip-text text-transparent bg-[linear-gradient(135deg,var(--color-primary)_0%,#0083FF_100%)]">hành trình</span> đáng nhớ</>}
           subtitle="Khám phá bộ sưu tập tour được yêu thích nhất từ Việt Nam đến quốc tế."
         />
 
         <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
-          <FilterBtn active={filter === 'all'} onClick={() => setFilter('all')}>🌍 Tất Cả</FilterBtn>
+          <FilterBtn active={filter === 'all'} onClick={() => setFilter('all')}>🌍 Tất cả</FilterBtn>
           <FilterBtn active={filter === 'Trong nước'} onClick={() => setFilter('Trong nước')}>🇻🇳 Trong nước</FilterBtn>
           <FilterBtn active={filter === 'Quốc tế'} onClick={() => setFilter('Quốc tế')}>✈️ Quốc tế</FilterBtn>
-          <FilterBtn active={filter === 'Theo mùa'} onClick={() => setFilter('Theo mùa')}>🌸 Theo mùa</FilterBtn>
+          <FilterBtn active={filter === 'Độc lạ'} onClick={() => setFilter('Độc lạ')}>🌸 Tour độc lạ</FilterBtn>
         </div>
 
         {loading ? (
@@ -71,7 +71,7 @@ export function FeaturedTours() {
         <div className="mt-16 text-center">
           <Button variant="outline" size="lg" className="group" asChild>
             <Link href="/tours">
-              Xem Tất Cả Tours <span className="group-hover:translate-x-1 transition-transform">→</span>
+              Xem tất cả Tour <span className="group-hover:translate-x-1 transition-transform">→</span>
             </Link>
           </Button>
         </div>

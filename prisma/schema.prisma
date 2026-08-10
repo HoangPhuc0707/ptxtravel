@@ -73,6 +73,7 @@ model Booking {
 model Contact {
   id          String   @id @default(cuid())
   name        String
+  phone       String?
   email       String
   subject     String?
   message     String

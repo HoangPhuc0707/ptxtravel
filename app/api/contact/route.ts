@@ -12,6 +12,7 @@ export async function POST(request: Request) {
     const newContact = await prisma.contact.create({
       data: {
         name: data.name,
+        phone: data.phone,
         email: data.email,
         subject: data.subject || '',
         message: data.message,

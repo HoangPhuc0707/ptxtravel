@@ -65,8 +65,8 @@ export function DestinationsGrid() {
     <section className="section bg-[var(--color-bg-soft)]">
       <div className="container mx-auto px-4 md:px-6">
         <SectionHeader 
-          label="Điểm Đến Hot"
-          title={<>Tới Những Chân Trời <span className="bg-clip-text text-transparent bg-[linear-gradient(135deg,var(--color-primary)_0%,#0083FF_100%)]">Mới Lạ</span></>}
+          label="Điểm đến hot"
+          title={<>Tới những chân trời <span className="bg-clip-text text-transparent bg-[linear-gradient(135deg,var(--color-primary)_0%,#0083FF_100%)]">mới lạ</span></>}
           subtitle="Khám phá các điểm đến được yêu thích nhất trong và ngoài nước."
         />
 
@@ -91,7 +91,7 @@ export function DestinationsGrid() {
                 <div className="absolute bottom-6 left-6 text-white">
                   <h3 className="text-2xl font-heading font-bold mb-1">{dest.name}</h3>
                   {/* Ideally fetch tour counts dynamically later */}
-                  <span className="text-sm text-gray-300">{dest.tourCount || 0} Tours</span>
+                  <span className="text-sm text-gray-300">{dest.tourCount || 0} Tour</span>
                 </div>
               </Link>
             </motion.div>

@@ -56,24 +56,24 @@ export function HeroSlider() {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-sm font-semibold mb-6">
-            <span className="text-xl">✈</span> Khám Phá Thế Giới Cùng PTX Travel
+            <span className="text-xl">✈</span> Khám phá thế giới cùng PTX Travel
           </div>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-white leading-tight mb-6 drop-shadow-lg">
-            Hành Trình <span className="bg-clip-text text-transparent bg-[linear-gradient(135deg,#0057B8_0%,#0083FF_100%)] drop-shadow-none">Tuyệt Vời</span><br/>Bắt Đầu Từ Đây
+            Hành trình <span className="bg-clip-text text-transparent bg-[linear-gradient(135deg,#0057B8_0%,#0083FF_100%)] drop-shadow-none">tuyệt vời</span><br/>bắt đầu từ đây
           </h1>
           <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto mb-10 drop-shadow-md">
             Chúng tôi mang đến những trải nghiệm du lịch đáng nhớ, từ vẻ đẹp Việt Nam đến những điểm đến kỳ thú trên toàn thế giới.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
             <Button size="lg" className="w-full sm:w-auto" onClick={() => window.location.href = '/tours'}>
-              <MapPin className="w-5 h-5" /> Khám Phá Tours
+              <MapPin className="w-5 h-5" /> Khám phá Tour
             </Button>
             <Button 
               size="lg" 
               className="w-full sm:w-auto bg-white/15 backdrop-blur-md border-2 border-white/40 text-white hover:bg-white hover:text-black hover:border-white shadow-none"
               onClick={() => window.location.href = '/contact'}
             >
-              <PhoneIcon className="w-5 h-5" /> Tư Vấn Miễn Phí
+              <PhoneIcon className="w-5 h-5" /> Liên hệ tư vấn
             </Button>
           </div>
         </motion.div>

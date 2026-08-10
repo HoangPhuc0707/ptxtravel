@@ -71,7 +71,7 @@ export function TourSidebar({ tour }: TourSidebarProps) {
           </Button>
           <Button variant="outline" size="lg" className="w-full h-14 rounded-2xl text-[var(--color-primary)] border-2 border-[var(--color-primary)] hover:bg-[var(--color-primary)] hover:text-white" asChild>
             <a href="tel:02103625678">
-              💬 Tư Vấn Miễn Phí
+              💬 Liên hệ tư vấn
             </a>
           </Button>
         </div>

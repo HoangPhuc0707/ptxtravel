@@ -38,7 +38,7 @@ export default function AdminTourToolbar({ currentCategory }: { currentCategory:
           <option value="">Tất cả danh mục</option>
           <option value="Trong nước">Trong nước</option>
           <option value="Quốc tế">Quốc tế</option>
-          <option value="Theo mùa">Theo mùa</option>
+          <option value="Độc lạ">Tour độc lạ</option>
         </select>
         <select className="bg-white border border-gray-200 rounded-lg text-sm px-3 py-2 outline-none focus:ring-2 focus:ring-[var(--color-primary)]">
           <option value="">Trạng thái</option>

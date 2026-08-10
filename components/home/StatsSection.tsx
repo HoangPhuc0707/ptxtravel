@@ -4,10 +4,10 @@ import React, { useEffect, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 
 const STATS = [
-  { value: 15000, suffix: '+', label: 'Khách Hàng Hài Lòng', icon: '🧳' },
-  { value: 50, suffix: '+', label: 'Điểm Đến Thế Giới', icon: '🗺️' },
-  { value: 12, suffix: ' Năm', label: 'Kinh Nghiệm', icon: '⭐' },
-  { value: 98, suffix: '%', label: 'Tỉ Lệ Hài Lòng', icon: '💬' },
+  { value: 15000, suffix: '+', label: 'Khách hàng hài lòng', icon: '🧳' },
+  { value: 50, suffix: '+', label: 'Điểm đến thế giới', icon: '🗺️' },
+  { value: 15, suffix: ' Năm', label: 'Kinh nghiệm', icon: '⭐' },
+  { value: 98, suffix: '%', label: 'Tỉ lệ hài lòng', icon: '💬' },
 ];
 
 function Counter({ value, duration = 2 }: { value: number, duration?: number }) {

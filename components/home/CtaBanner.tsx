@@ -21,16 +21,16 @@ export function CtaBanner() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="font-heading font-bold text-3xl md:text-5xl text-white mb-6 leading-tight">
-            Sẵn Sàng Bắt Đầu <br className="hidden md:block" /> Chuyến Đi Trong Mơ Của Bạn?
+            Sẵn sàng cho chuyến <br className="hidden md:block" /> hành trình mới của bạn!!!
           </h2>
           <p className="text-blue-100 text-lg mb-10 max-w-2xl mx-auto">
-            Liên hệ ngay với PTX Travel để nhận tư vấn miễn phí và ưu đãi đặc biệt cho lịch trình của riêng bạn.
+            Liên hệ ngay với PTX Travel để được hỗ trợ tư vấn và nhận các ưu đãi đặc biệt cho lịch trình của riêng bạn.
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button variant="red" size="lg" className="w-full sm:w-auto h-14 px-8 text-base shadow-[0_8px_24px_rgba(232,25,44,0.4)]" asChild>
               <Link href="/contact">
-                <CalendarCheck className="w-5 h-5 mr-2" /> Đặt Tour Ngay
+                <CalendarCheck className="w-5 h-5 mr-2" /> Đặt Tour ngay
               </Link>
             </Button>
             <Button 

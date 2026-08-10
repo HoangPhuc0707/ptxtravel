@@ -38,9 +38,9 @@ export function TourFilter({ currentCategory, currentSort }: { currentCategory: 
             onChange={() => updateFilters('category', 'Quốc tế')} 
           />
           <FilterRadio 
-            label="Tour theo mùa" 
-            checked={currentCategory === 'Theo mùa'} 
-            onChange={() => updateFilters('category', 'Theo mùa')} 
+            label="Tour độc lạ" 
+            checked={currentCategory === 'Độc lạ'} 
+            onChange={() => updateFilters('category', 'Độc lạ')} 
           />
         </div>
       </div>

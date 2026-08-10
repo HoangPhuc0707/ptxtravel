@@ -15,9 +15,9 @@ export function Navbar() {
   const pathname = usePathname();
 
   const NAV_LINKS = [
+    { href: '/about', label: 'Về Chúng Tôi' },
     { href: '/tours', label: 'Tất cả Tour' },
     { href: '/destinations', label: 'Điểm Đến' },
-    { href: '/about', label: 'Về Chúng Tôi' },
     { href: '/blog', label: 'Blog' },
     { href: '/contact', label: 'Liên hệ' },
   ];

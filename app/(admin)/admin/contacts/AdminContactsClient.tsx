@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Search, Mail, MessageSquare, CheckCircle, Reply } from 'lucide-react';
+import { Search, Mail, MessageSquare, CheckCircle, Reply, Phone } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 export default function AdminContactsClient({ contacts: initialContacts }: { contacts: any[] }) {
@@ -12,6 +12,7 @@ export default function AdminContactsClient({ contacts: initialContacts }: { con
   const filtered = initialContacts.filter(c => 
     c.name.toLowerCase().includes(search.toLowerCase()) || 
     c.email.toLowerCase().includes(search.toLowerCase()) ||
+    (c.phone && c.phone.toLowerCase().includes(search.toLowerCase())) ||
     (c.subject && c.subject.toLowerCase().includes(search.toLowerCase()))
   );
 
@@ -51,7 +52,7 @@ export default function AdminContactsClient({ contacts: initialContacts }: { con
               type="text" 
               value={search}
               onChange={e => setSearch(e.target.value)}
-              placeholder="Tìm kiếm người gửi, email..." 
+              placeholder="Tìm kiếm người gửi, email, số điện thoại..." 
               className="w-full pl-10 pr-4 py-2 bg-white border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
             />
           </div>
@@ -81,8 +82,13 @@ export default function AdminContactsClient({ contacts: initialContacts }: { con
                 <tr key={contact.id} className="hover:bg-gray-50 transition-colors">
                   <td className="px-6 py-4">
                     <div className="font-medium text-gray-900">{contact.name}</div>
-                    <div className="flex items-center gap-1.5 text-xs text-gray-500 mt-1">
-                      <Mail className="w-3.5 h-3.5" /> {contact.email}
+                    <div className="flex flex-col gap-1 mt-1">
+                      <div className="flex items-center gap-1.5 text-xs text-gray-500">
+                        <Phone className="w-3.5 h-3.5" /> {contact.phone || 'Không có số ĐT'}
+                      </div>
+                      <div className="flex items-center gap-1.5 text-xs text-gray-500">
+                        <Mail className="w-3.5 h-3.5" /> {contact.email}
+                      </div>
                     </div>
                   </td>
                   <td className="px-6 py-4">

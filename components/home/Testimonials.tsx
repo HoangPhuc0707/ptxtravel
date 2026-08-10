@@ -8,23 +8,23 @@ import { Star } from 'lucide-react';
 const REVIEWS = [
   {
     id: 1,
-    name: 'Nguyễn Văn A',
-    role: 'Khách hàng',
-    content: 'Chuyến đi Phú Quốc thực sự tuyệt vời. Hướng dẫn viên nhiệt tình, khách sạn đẹp và đồ ăn rất ngon. Chắc chắn sẽ tiếp tục ủng hộ PTX Travel!',
+    name: 'Phạm Minh Đức',
+    role: 'Khách du lịch',
+    content: 'Gia đình mình vừa có chuyến du lịch Đà Nẵng - Hội An rất đáng nhớ cùng PTX Travel. Bạn HDV cực kỳ có tâm, chăm sóc chu đáo từ bữa ăn đến giấc ngủ. Chắc chắn năm sau cả nhà sẽ lại chọn PTX!',
     rating: 5,
   },
   {
     id: 2,
-    name: 'Trần Thị B',
-    role: 'Khách hàng',
-    content: 'Dịch vụ vô cùng chuyên nghiệp. Mình đi tour Hàn Quốc và mọi thứ đều được chuẩn bị chu đáo, từ visa đến lịch trình tham quan. Rất hài lòng.',
+    name: 'Hoàng Ngọc Ánh',
+    role: 'Khách hàng doanh nghiệp',
+    content: 'Công ty mình chọn PTX để tổ chức team building cho hơn 50 nhân viên. Phải nói là khâu tổ chức rất chuyên nghiệp, các trò chơi gắn kết hay và lịch trình vui vẻ, không bị quá mệt.',
     rating: 5,
   },
   {
     id: 3,
-    name: 'Lê Hoàng C',
-    role: 'Khách hàng',
-    content: 'Lần đầu đặt tour qua PTX Travel và trải nghiệm cực kỳ tốt. Nhân viên tư vấn tận tâm, giá cả hợp lý so với chất lượng dịch vụ nhận được.',
+    name: 'Trần Thanh Tùng',
+    role: 'Khách du lịch',
+    content: 'Mình đi tour Thái Lan 5 ngày 4 đêm. Giá tour rất hợp lý mà khách sạn lại ở ngay trung tâm. Mọi thủ tục đều được các bạn nhân viên hỗ trợ nhiệt tình từ A đến Z. Sẽ giới thiệu cho bạn bè!',
     rating: 5,
   },
 ];
@@ -34,8 +34,8 @@ export function Testimonials() {
     <section className="section bg-white">
       <div className="container mx-auto px-4 md:px-6">
         <SectionHeader 
-          label="Đánh Giá"
-          title={<>Khách Hàng Nói Gì Về <span className="bg-clip-text text-transparent bg-[linear-gradient(135deg,var(--color-primary)_0%,#0083FF_100%)]">PTX Travel</span></>}
+          label="Đánh giá"
+          title={<>Cảm nhận của Khách hàng về <span className="bg-clip-text text-transparent bg-[linear-gradient(135deg,var(--color-primary)_0%,#0083FF_100%)]">PTX Travel</span></>}
           subtitle="Hơn 15,000+ khách hàng đã tin tưởng và đồng hành cùng chúng tôi trên những chuyến đi."
         />
 

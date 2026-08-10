@@ -1,6 +1,7 @@
 import React from "react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { FloatingContact } from "@/components/layout/FloatingContact";
 
 export default function CustomerLayout({
   children,
@@ -12,6 +13,7 @@ export default function CustomerLayout({
       <Navbar />
       <main className="flex-1 pt-[76px]">{children}</main>
       <Footer />
+      <FloatingContact />
     </div>
   );
 }
