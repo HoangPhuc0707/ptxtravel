@@ -66,7 +66,7 @@ export default function ContactPage() {
           {/* Left Column - Contact Info */}
           <div className="lg:col-span-5">
             
-            <h1 className="mt-8 text-4xl md:text-5xl font-bold font-heading text-gray-900 leading-[1.2] mb-6">
+            <h1 className="mt-8 text-3xl md:text-4xl font-bold font-heading text-gray-900 leading-[1.2] mb-6">
               Bắt Đầu <span className="text-[var(--color-primary)]">Hành Trình</span><br />Của Bạn Ngay
             </h1>
             

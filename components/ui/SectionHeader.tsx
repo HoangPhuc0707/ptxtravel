@@ -17,7 +17,7 @@ export function SectionHeader({ label, title, subtitle, className = '' }: Sectio
         {title}
       </h2>
       {subtitle && (
-        <p className="text-[17px] text-[var(--color-text-muted)] max-w-[560px] mx-auto leading-[1.7]">
+        <p className="text-[17px] text-[var(--color-text-muted)] max-w-3xl mx-auto leading-[1.7]">
           {subtitle}
         </p>
       )}

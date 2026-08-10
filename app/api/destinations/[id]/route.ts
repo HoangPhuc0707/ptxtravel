@@ -31,6 +31,9 @@ export async function PUT(request: Request, { params }: { params: Promise<{ id: 
         slug: slug,
         image: data.image,
         description: data.description,
+        content: data.content,
+        images: data.images ? JSON.stringify(data.images) : undefined,
+        highlights: data.highlights ? JSON.stringify(data.highlights) : undefined,
         isFeatured: data.isFeatured,
       }
     });

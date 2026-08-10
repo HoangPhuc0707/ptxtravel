@@ -37,7 +37,7 @@ export function FeaturedTours() {
 
         <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
           <FilterBtn active={filter === 'all'} onClick={() => setFilter('all')}>🌍 Tất cả</FilterBtn>
-          <FilterBtn active={filter === 'Trong nước'} onClick={() => setFilter('Trong nước')}>🇻🇳 Trong nước</FilterBtn>
+          <FilterBtn active={filter === 'Trong nước'} onClick={() => setFilter('Trong nước')}>📍 Trong nước</FilterBtn>
           <FilterBtn active={filter === 'Quốc tế'} onClick={() => setFilter('Quốc tế')}>✈️ Quốc tế</FilterBtn>
           <FilterBtn active={filter === 'Độc lạ'} onClick={() => setFilter('Độc lạ')}>🌸 Tour độc lạ</FilterBtn>
         </div>

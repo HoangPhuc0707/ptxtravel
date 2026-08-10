@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Plus, Edit, Trash2, Search, Loader2, Image as ImageIcon } from 'lucide-react';
+import { Plus, Edit, Trash2, Search, Loader2, Image as ImageIcon, X } from 'lucide-react';
 import Image from 'next/image';
+import TiptapEditor from '@/components/admin/TiptapEditor';
 
 interface Destination {
   id: string;
@@ -10,6 +11,9 @@ interface Destination {
   slug: string;
   image: string;
   description: string | null;
+  content: string | null;
+  images: string | null;
+  highlights: string | null;
   isFeatured: boolean;
   createdAt: string;
 }
@@ -29,6 +33,9 @@ export function AdminDestinationsClient() {
     slug: '',
     image: '',
     description: '',
+    content: '',
+    images: [] as string[],
+    highlights: [] as string[],
     isFeatured: false
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -53,12 +60,20 @@ export function AdminDestinationsClient() {
 
   const openModal = (dest?: Destination) => {
     if (dest) {
+      let parsedImages = [];
+      let parsedHighlights = [];
+      try { parsedImages = dest.images ? JSON.parse(dest.images) : []; } catch(e) {}
+      try { parsedHighlights = dest.highlights ? JSON.parse(dest.highlights) : []; } catch(e) {}
+      
       setEditingDest(dest);
       setFormData({
         name: dest.name,
         slug: dest.slug,
         image: dest.image,
         description: dest.description || '',
+        content: dest.content || '',
+        images: parsedImages,
+        highlights: parsedHighlights,
         isFeatured: dest.isFeatured
       });
     } else {
@@ -68,6 +83,9 @@ export function AdminDestinationsClient() {
         slug: '',
         image: '',
         description: '',
+        content: '',
+        images: [],
+        highlights: [],
         isFeatured: false
       });
     }
@@ -150,6 +168,34 @@ export function AdminDestinationsClient() {
     } catch (error) {
       console.error('Error uploading image:', error);
       alert('Lỗi upload ảnh!');
+    }
+  };
+
+  const handleAlbumImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files || e.target.files.length === 0) return;
+    
+    // Allow multiple files if they select multiple, but let's handle just the first one for now or loop
+    // To make it simple, we handle one by one like the title image, or loop through all selected files
+    const files = Array.from(e.target.files);
+    
+    for (const file of files) {
+      const uploadData = new FormData();
+      uploadData.append('file', file);
+      
+      try {
+        const res = await fetch('/api/upload', {
+          method: 'POST',
+          body: uploadData,
+        });
+        
+        if (res.ok) {
+          const data = await res.json();
+          setFormData(prev => ({ ...prev, images: [...prev.images, data.url] }));
+        }
+      } catch (error) {
+        console.error('Error uploading album image:', error);
+        alert('Lỗi upload ảnh vào album!');
+      }
     }
   };
 
@@ -329,13 +375,121 @@ export function AdminDestinationsClient() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">Mô tả</label>
+                <label className="block text-sm font-medium text-slate-700 mb-1">Mô tả ngắn</label>
                 <textarea
                   value={formData.description}
                   onChange={(e) => setFormData({...formData, description: e.target.value})}
                   className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] min-h-[100px]"
                   placeholder="Nhập mô tả ngắn gọn về điểm đến..."
                 />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-1">Nội dung chi tiết (Blog)</label>
+                <div className="border border-slate-200 rounded-lg overflow-hidden">
+                  <TiptapEditor
+                    value={formData.content || ''}
+                    onChange={(content) => setFormData({ ...formData, content })}
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-1">Các điểm nổi bật (Highlights)</label>
+                <div className="space-y-2">
+                  {formData.highlights.map((h, i) => (
+                    <div key={i} className="flex gap-2">
+                      <input
+                        type="text"
+                        value={h}
+                        onChange={(e) => {
+                          const newHighlights = [...formData.highlights];
+                          newHighlights[i] = e.target.value;
+                          setFormData({ ...formData, highlights: newHighlights });
+                        }}
+                        className="flex-1 px-4 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
+                        placeholder="Ví dụ: Cảnh quan tuyệt đẹp"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const newHighlights = formData.highlights.filter((_, idx) => idx !== i);
+                          setFormData({ ...formData, highlights: newHighlights });
+                        }}
+                        className="p-2 text-red-500 hover:bg-red-50 rounded-lg"
+                      >
+                        <X className="w-5 h-5" />
+                      </button>
+                    </div>
+                  ))}
+                  <button
+                    type="button"
+                    onClick={() => setFormData({ ...formData, highlights: [...formData.highlights, ''] })}
+                    className="text-sm font-medium text-[var(--color-primary)] hover:underline flex items-center gap-1"
+                  >
+                    <Plus className="w-4 h-4" /> Thêm điểm nổi bật
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-1">Album ảnh (Images)</label>
+                <div className="space-y-2">
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-2">
+                    {formData.images.map((img, i) => (
+                      <div key={i} className="relative group rounded-lg overflow-hidden border border-slate-200 aspect-video bg-slate-50">
+                        <img src={img} alt={`Album ${i}`} className="w-full h-full object-cover" />
+                        <button
+                          type="button"
+                          onClick={() => {
+                            const newImages = formData.images.filter((_, idx) => idx !== i);
+                            setFormData({ ...formData, images: newImages });
+                          }}
+                          className="absolute top-1 right-1 p-1 bg-white/80 text-red-500 hover:bg-white rounded opacity-0 group-hover:opacity-100 transition-opacity"
+                        >
+                          <X className="w-4 h-4" />
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <div className="flex gap-2">
+                      <input
+                        type="text"
+                        id="newImageInput"
+                        className="flex-1 px-4 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
+                        placeholder="URL ảnh mới"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const input = document.getElementById('newImageInput') as HTMLInputElement;
+                          if (input.value) {
+                            setFormData({ ...formData, images: [...formData.images, input.value] });
+                            input.value = '';
+                          }
+                        }}
+                        className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-sm font-medium"
+                      >
+                        Thêm
+                      </button>
+                    </div>
+                    
+                    <div className="relative mt-2">
+                      <input 
+                        type="file" 
+                        accept="image/*"
+                        multiple
+                        onChange={handleAlbumImageUpload}
+                        className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" 
+                      />
+                      <button type="button" className="w-full px-4 py-2 bg-blue-50 hover:bg-blue-100 text-[var(--color-primary)] border border-blue-200 border-dashed rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2">
+                        <ImageIcon className="w-4 h-4" />
+                        Tải ảnh từ máy tính lên (Có thể chọn nhiều ảnh)
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <div className="flex items-center gap-2">

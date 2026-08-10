@@ -7,19 +7,7 @@ export async function GET() {
       orderBy: { createdAt: 'desc' },
     });
     
-    const destinationsWithCount = await Promise.all(
-      destinations.map(async (dest) => {
-        const tourCount = await prisma.tour.count({
-          where: { 
-            destination: dest.name,
-            isHidden: false
-          }
-        });
-        return { ...dest, tourCount };
-      })
-    );
-
-    return NextResponse.json(destinationsWithCount);
+    return NextResponse.json(destinations);
   } catch (error) {
     console.error('Error fetching destinations:', error);
     return NextResponse.json({ error: 'Error fetching destinations' }, { status: 500 });
@@ -54,6 +42,9 @@ export async function POST(request: Request) {
         slug: slug,
         image: data.image,
         description: data.description || '',
+        content: data.content || '',
+        images: data.images ? JSON.stringify(data.images) : '[]',
+        highlights: data.highlights ? JSON.stringify(data.highlights) : '[]',
         isFeatured: data.isFeatured || false,
       }
     });
