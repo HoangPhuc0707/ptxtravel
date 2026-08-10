@@ -22,24 +22,26 @@ export function Footer() {
 
   return (
     <>
-      <footer className="bg-slate-900 text-white pt-20 pb-8" aria-label="Footer">
+      <footer className="bg-slate-900 text-white pt-12 pb-6" aria-label="Footer">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
             {/* Brand */}
-            <div>
-              <Link href="/" className="flex items-center group mb-6">
-                <Image 
-                  src="/assets/Logo/2.png" 
-                  alt="PTX Travel" 
-                  width={200} 
-                  height={60} 
-                  className="h-12 w-auto object-contain transition-transform group-hover:scale-105"
-                />
-              </Link>
-              <p className="text-slate-300 text-sm leading-relaxed mb-6">
+            <div className="flex flex-col items-center text-center">
+              <div className="w-full flex justify-center mb-4">
+                <Link href="/" className="inline-flex items-center justify-center bg-white rounded-2xl p-2 shadow-lg group overflow-hidden">
+                  <Image 
+                    src="/assets/Logo/1.png" 
+                    alt="PTX Travel" 
+                    width={280} 
+                    height={100} 
+                    className="h-24 w-auto object-contain transition-transform group-hover:scale-105"
+                  />
+                </Link>
+              </div>
+              <p className="text-slate-300 text-sm leading-relaxed mb-4">
                 Công ty du lịch uy tín hàng đầu tại TP.HCM. Chuyên cung cấp tour du lịch trong nước và quốc tế với dịch vụ chuyên nghiệp, giá cạnh tranh.
               </p>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center justify-center gap-3 w-full">
                 <a href="https://www.facebook.com/PTXTravel" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-[var(--color-primary)] hover:text-white transition-colors" aria-label="Facebook">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
                 </a>
@@ -57,7 +59,7 @@ export function Footer() {
 
             {/* Tour Links */}
             <div>
-              <h4 className="font-heading font-bold text-xl mb-6">Tour Du Lịch</h4>
+              <h4 className="font-heading font-bold text-xl mb-4">Tour Du Lịch</h4>
               <nav className="flex flex-col gap-3 text-slate-300 text-sm" aria-label="Tour links">
                 <Link href="/tours" className="hover:text-white hover:translate-x-1 transition-all">Tất cả các Tour</Link>
                 <Link href="/tours?category=Trong%20nước" className="hover:text-white hover:translate-x-1 transition-all">Tour trong nước</Link>
@@ -68,7 +70,7 @@ export function Footer() {
 
             {/* Services */}
             <div>
-              <h4 className="font-heading font-bold text-xl mb-6">Dịch Vụ</h4>
+              <h4 className="font-heading font-bold text-xl mb-4">Dịch Vụ</h4>
               <nav className="flex flex-col gap-3 text-slate-300 text-sm" aria-label="Service links">
                 <Link href="/about#services" className="hover:text-white hover:translate-x-1 transition-all">Đặt Vé Máy Bay</Link>
                 <Link href="/about#services" className="hover:text-white hover:translate-x-1 transition-all">Đặt Khách Sạn</Link>
@@ -81,7 +83,7 @@ export function Footer() {
 
             {/* Newsletter */}
             <div>
-              <h4 className="font-heading font-bold text-xl mb-6">Đăng Ký Nhận Ưu Đãi</h4>
+              <h4 className="font-heading font-bold text-xl mb-4">Đăng Ký Nhận Ưu Đãi</h4>
               <p className="text-slate-400 text-sm leading-relaxed mb-4">
                 Nhận ngay ưu đãi 10% cho tour đầu tiên khi đăng ký newsletter của PTX Travel.
               </p>
@@ -133,7 +135,7 @@ export function Footer() {
           </div>
 
           {/* Footer Bottom */}
-          <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="border-t border-slate-800 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-slate-400 text-sm">© 2026 PTX Travel — Phú Thọ Xanh Travel. All rights reserved. Designed by Nguyễn Hoàng Phúc.</p>
             <div className="flex flex-wrap gap-4 text-sm text-slate-400">
               <Link href="#" className="hover:text-white transition-colors">Chính Sách Bảo Mật</Link>
