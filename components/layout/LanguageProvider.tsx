@@ -16,7 +16,7 @@ const dictionary = {
     'nav.bookNow': 'Đặt Tour Ngay',
     
     // Footer
-    'footer.description': 'Công ty du lịch uy tín tại TP.HCM. Chuyên cung cấp tour du lịch trong nước và quốc tế với dịch vụ chuyên nghiệp, giá cạnh tranh.',
+    'footer.description': 'Chuyên cung cấp tour du lịch trong nước và quốc tế, mang đến dịch vụ chuyên nghiệp, tận tâm và những trải nghiệm đáng nhớ.',
     'footer.aboutUs': 'Về Chúng Tôi',
     'footer.home': 'Trang chủ',
     'footer.aboutPTX': 'Về PTX Travel',
