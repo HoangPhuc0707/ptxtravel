@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation';
 
 export default async function EditTourPage({ params }: { params: Promise<{ slug: string }> }) {
   const slug = (await params).slug;
-  const tours = await getTours();
+  const tours = await getTours({ includeHidden: true });
   const tour = tours.find((t) => t.slug === slug);
 
   if (!tour) {

@@ -12,6 +12,7 @@ interface Destination {
   slug: string;
   image: string;
   isFeatured: boolean;
+  tourCount?: number;
 }
 
 export function DestinationsGrid() {
@@ -90,7 +91,7 @@ export function DestinationsGrid() {
                 <div className="absolute bottom-6 left-6 text-white">
                   <h3 className="text-2xl font-heading font-bold mb-1">{dest.name}</h3>
                   {/* Ideally fetch tour counts dynamically later */}
-                  <span className="text-sm text-gray-300">Khám phá ngay</span>
+                  <span className="text-sm text-gray-300">{dest.tourCount || 0} Tours</span>
                 </div>
               </Link>
             </motion.div>

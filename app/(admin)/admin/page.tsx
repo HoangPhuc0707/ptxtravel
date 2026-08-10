@@ -4,7 +4,7 @@ import { Users, Map, ShoppingBag, FileText, ArrowUpRight, TrendingUp } from 'luc
 import { getTours, getBlogs } from '@/lib/data';
 
 export default async function AdminDashboard() {
-  const tours = await getTours();
+  const tours = await getTours({ includeHidden: true });
   const blogs = await getBlogs();
   
   // Stats calculation

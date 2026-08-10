@@ -99,7 +99,8 @@ export function AdminDestinationsClient() {
         await fetchDestinations();
         closeModal();
       } else {
-        alert('Có lỗi xảy ra khi lưu!');
+        const errorData = await res.json().catch(() => ({}));
+        alert(`Có lỗi xảy ra khi lưu! ${errorData.details || errorData.error || ''}`);
       }
     } catch (error) {
       console.error('Error saving destination:', error);
@@ -212,7 +213,7 @@ export function AdminDestinationsClient() {
                   <td className="py-3 px-6">
                     <div className="w-16 h-12 relative rounded overflow-hidden bg-slate-100 border border-slate-200">
                       {dest.image ? (
-                        <Image src={dest.image} alt={dest.name} fill className="object-cover" />
+                        <img src={dest.image} alt={dest.name} className="w-full h-full object-cover" />
                       ) : (
                         <div className="flex items-center justify-center w-full h-full text-slate-400">
                           <ImageIcon className="w-5 h-5" />
@@ -297,7 +298,7 @@ export function AdminDestinationsClient() {
                 <div className="flex gap-4 items-start">
                   <div className="w-32 h-32 relative rounded-lg border border-slate-200 overflow-hidden bg-slate-50 shrink-0">
                     {formData.image ? (
-                      <Image src={formData.image} alt="Preview" fill className="object-cover" />
+                      <img src={formData.image} alt="Preview" className="w-full h-full object-cover" />
                     ) : (
                       <div className="flex items-center justify-center w-full h-full text-slate-300">
                         <ImageIcon className="w-8 h-8" />

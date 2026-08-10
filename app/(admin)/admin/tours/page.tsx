@@ -14,7 +14,7 @@ export default async function AdminToursPage({
   const params = await searchParams;
   const category = params.category as string | undefined;
 
-  let tours = await getTours();
+  let tours = await getTours({ includeHidden: true });
 
   if (category) {
     tours = tours.filter(t => t.category?.trim().toLowerCase() === category.trim().toLowerCase());

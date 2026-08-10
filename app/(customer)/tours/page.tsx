@@ -18,8 +18,13 @@ export default async function ToursPage({
   const params = await searchParams;
   const category = params.category as string | undefined;
   const sort = params.sort as string | undefined;
+  const destination = params.destination as string | undefined;
   
   let tours = await getTours();
+
+  if (destination) {
+    tours = tours.filter(t => t.destination?.trim().toLowerCase() === destination.trim().toLowerCase());
+  }
 
   if (category && category !== 'all') {
     tours = tours.filter(t => t.category?.trim().toLowerCase() === category.trim().toLowerCase());
@@ -38,10 +43,16 @@ export default async function ToursPage({
       <div className="bg-slate-900 pt-24 pb-16 text-center text-white">
         <div className="container mx-auto px-4">
           <h1 className="font-heading font-bold text-4xl md:text-5xl mb-4">
-            Khám Phá Các <span className="text-[var(--color-primary)]">Tours</span>
+            {destination ? (
+              <>Khám Phá Các Tours Tại <span className="text-[var(--color-primary)]">{destination}</span></>
+            ) : (
+              <>Khám Phá Các <span className="text-[var(--color-primary)]">Tours</span></>
+            )}
           </h1>
           <p className="text-slate-300 max-w-2xl mx-auto">
-            Hàng ngàn chuyến đi thú vị đang chờ đón bạn. Lựa chọn hành trình phù hợp nhất và bắt đầu chuyến đi trong mơ của bạn ngay hôm nay.
+            {destination 
+              ? `Tận hưởng chuyến đi tuyệt vời nhất tại ${destination} cùng PTX Travel.`
+              : `Hàng ngàn chuyến đi thú vị đang chờ đón bạn. Lựa chọn hành trình phù hợp nhất và bắt đầu chuyến đi trong mơ của bạn ngay hôm nay.`}
           </p>
         </div>
       </div>
@@ -58,7 +69,7 @@ export default async function ToursPage({
             <div className="w-full lg:w-3/4">
               <div className="flex justify-between items-center mb-6">
                 <p className="text-gray-500">
-                  Hiển thị <strong className="text-gray-900">{tours.length}</strong> kết quả
+                  Hiển thị <strong className="text-gray-900">{tours.length}</strong> kết quả {destination && <span>cho <strong>{destination}</strong></span>}
                 </p>
               </div>
 

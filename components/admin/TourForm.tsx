@@ -10,6 +10,22 @@ export default function TourForm({ initialData = null }: { initialData?: any }) 
   const [isUploadingImage, setIsUploadingImage] = useState(false);
   const [isUploadingGallery, setIsUploadingGallery] = useState(false);
   const [error, setError] = useState('');
+  const [availableDestinations, setAvailableDestinations] = useState<any[]>([]);
+
+  React.useEffect(() => {
+    async function fetchDestinations() {
+      try {
+        const res = await fetch('/api/destinations');
+        if (res.ok) {
+          const data = await res.json();
+          setAvailableDestinations(data);
+        }
+      } catch (err) {
+        console.error('Error fetching destinations:', err);
+      }
+    }
+    fetchDestinations();
+  }, []);
 
   const [formData, setFormData] = useState({
     title: initialData?.title || '',
@@ -527,13 +543,18 @@ export default function TourForm({ initialData = null }: { initialData?: any }) 
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Điểm đến</label>
-                <input
-                  type="text"
+                <select
                   value={formData.destination}
                   onChange={(e) => setFormData({...formData, destination: e.target.value})}
                   className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm"
-                  placeholder="Phú Quốc"
-                />
+                >
+                  <option value="">-- Chọn điểm đến --</option>
+                  {availableDestinations.map((dest) => (
+                    <option key={dest.id} value={dest.name}>
+                      {dest.name}
+                    </option>
+                  ))}
+                </select>
               </div>
             </div>
           </div>

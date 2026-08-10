@@ -34,10 +34,11 @@ export interface Blog {
   [key: string]: any;
 }
 
-export async function getTours(): Promise<Tour[]> {
+export async function getTours({ includeHidden = false }: { includeHidden?: boolean } = {}): Promise<Tour[]> {
   try {
+    const where = includeHidden ? {} : { isHidden: false };
     const rawTours = await prisma.tour.findMany({
-      where: { isHidden: false },
+      where,
       orderBy: { createdAt: 'desc' }
     });
     
