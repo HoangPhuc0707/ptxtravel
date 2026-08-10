@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { MapPin, Phone, Mail, Clock, MessageCircle } from 'lucide-react';
+import { MapPin, Phone, Mail, MessageCircle } from 'lucide-react';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -118,11 +118,13 @@ export default function ContactPage() {
               {/* Item 5: Social Media */}
               <div className="flex gap-5">
                 <div className="w-[52px] h-[52px] rounded-2xl bg-[#0b63e5] flex items-center justify-center shrink-0 shadow-lg">
-                  <MessageCircle className="w-6 h-6 text-white" />
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /></svg>
                 </div>
-                <div>
+                <div className="flex flex-col justify-center">
                   <div className="text-gray-500 text-xs font-bold uppercase tracking-wider mb-1">Mạng xã hội</div>
-                  <div className="text-[#0b63e5] font-bold">Facebook · Instagram · Zalo OA · YouTube</div>
+                  <a href="https://www.facebook.com/PTXTravel" target="_blank" rel="noopener noreferrer" className="text-[#0b63e5] font-bold hover:underline">
+                    PTX Travel Fanpage
+                  </a>
                 </div>
               </div>
             </div>
