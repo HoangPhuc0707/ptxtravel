@@ -4,8 +4,10 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Music, Send, ArrowUp, Phone } from 'lucide-react';
+import { useLanguage } from '@/components/layout/LanguageProvider';
 
 export function Footer() {
+  const { t } = useLanguage();
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
@@ -39,7 +41,7 @@ export function Footer() {
                 </Link>
               </div>
               <p className="text-slate-300 text-sm leading-relaxed mb-4">
-                Công ty du lịch uy tín tại TP.HCM. Chuyên cung cấp tour du lịch trong nước và quốc tế với dịch vụ chuyên nghiệp, giá cạnh tranh.
+                {t('footer.description')}
               </p>
               <div className="flex items-center justify-center gap-3 w-full">
                 <a href="https://www.facebook.com/PTXTravel" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-[var(--color-primary)] hover:text-white transition-colors" aria-label="Facebook">
@@ -59,9 +61,9 @@ export function Footer() {
 
             {/* Tour Links */}
             <div>
-              <h4 className="font-heading font-bold text-xl mb-4">Tour du lịch</h4>
+              <h4 className="font-heading font-bold text-xl mb-4">{t('footer.tours')}</h4>
               <nav className="flex flex-col gap-3 text-slate-300 text-sm" aria-label="Tour links">
-                <Link href="/tours" className="hover:text-white hover:translate-x-1 transition-all">Tất cả các Tour</Link>
+                <Link href="/tours" className="hover:text-white hover:translate-x-1 transition-all">{t('nav.tours')}</Link>
                 <Link href="/tours?category=Trong%20nước" className="hover:text-white hover:translate-x-1 transition-all">Tour trong nước</Link>
                 <Link href="/tours?category=Quốc%20tế" className="hover:text-white hover:translate-x-1 transition-all">Tour quốc tế</Link>
                 <Link href="/tours?category=Độc%20lạ" className="hover:text-white hover:translate-x-1 transition-all">Tour độc lạ</Link>
@@ -70,7 +72,7 @@ export function Footer() {
 
             {/* Services */}
             <div>
-              <h4 className="font-heading font-bold text-xl mb-4">Dịch vụ</h4>
+              <h4 className="font-heading font-bold text-xl mb-4">{t('footer.services')}</h4>
               <nav className="flex flex-col gap-3 text-slate-300 text-sm" aria-label="Service links">
                 <Link href="/about#services" className="hover:text-white hover:translate-x-1 transition-all">Đặt vé máy bay</Link>
                 <Link href="/about#services" className="hover:text-white hover:translate-x-1 transition-all">Đặt khách sạn</Link>
@@ -83,9 +85,9 @@ export function Footer() {
 
             {/* Newsletter */}
             <div>
-              <h4 className="font-heading font-bold text-xl mb-4">Đăng ký nhận ưu đãi</h4>
+              <h4 className="font-heading font-bold text-xl mb-4">{t('footer.newsletterTitle')}</h4>
               <p className="text-slate-400 text-sm leading-relaxed mb-4">
-                Nhận ngay ưu đãi 10% cho tour đầu tiên khi đăng ký newsletter của PTX Travel.
+                {t('footer.newsletterDesc')}
               </p>
               <form
                 className="relative flex items-center"
@@ -136,10 +138,10 @@ export function Footer() {
 
           {/* Footer Bottom */}
           <div className="border-t border-slate-800 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-slate-400 text-sm">© 2026 PTX Travel. All rights reserved. Designed by Nguyễn Hoàng Phúc.</p>
+            <p className="text-slate-400 text-sm">© {new Date().getFullYear()} PTX Travel. {t('footer.copyright')} Designed by Nguyễn Hoàng Phúc.</p>
             <div className="flex flex-wrap gap-4 text-sm text-slate-400">
-              <Link href="#" className="hover:text-white transition-colors">Chính sách bảo mật</Link>
-              <Link href="#" className="hover:text-white transition-colors">Điều khoản</Link>
+              <Link href="#" className="hover:text-white transition-colors">{t('footer.privacy')}</Link>
+              <Link href="#" className="hover:text-white transition-colors">{t('footer.terms')}</Link>
               <Link href="#" className="hover:text-white transition-colors">Chính sách hủy Tour</Link>
             </div>
           </div>

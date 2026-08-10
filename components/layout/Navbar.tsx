@@ -6,20 +6,20 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
-
-
+import { useLanguage } from '@/components/layout/LanguageProvider';
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const { lang, setLang, t } = useLanguage();
 
   const NAV_LINKS = [
-    { href: '/about', label: 'Về Chúng Tôi' },
-    { href: '/tours', label: 'Tất cả Tour' },
-    { href: '/destinations', label: 'Điểm Đến' },
-    { href: '/blog', label: 'Blog' },
-    { href: '/contact', label: 'Liên hệ' },
+    { href: '/about', label: t('nav.about') },
+    { href: '/tours', label: t('nav.tours') },
+    { href: '/destinations', label: t('nav.destinations') },
+    { href: '/blog', label: t('nav.blog') },
+    { href: '/contact', label: t('nav.contact') },
   ];
 
   useEffect(() => {
@@ -89,13 +89,29 @@ export function Navbar() {
 
           {/* Right Actions */}
           <div className="hidden lg:flex items-center gap-4">
+            {/* Language Switcher */}
+            <div className="flex items-center p-1 mr-2 text-xs font-bold text-gray-500 bg-[#F4F6F8] rounded-full">
+              <button 
+                onClick={() => setLang('vi')} 
+                className={`px-3 py-1.5 rounded-full transition-all ${lang === 'vi' ? 'bg-[#0052CC] text-white shadow-sm' : 'hover:text-gray-700'}`}
+              >
+                VI
+              </button>
+              <button 
+                onClick={() => setLang('en')} 
+                className={`px-3 py-1.5 rounded-full transition-all ${lang === 'en' ? 'bg-[#0052CC] text-white shadow-sm' : 'hover:text-gray-700'}`}
+              >
+                EN
+              </button>
+            </div>
+
             <Button variant="outline" size="default" className="py-2 px-4 text-sm" asChild>
               <a href="tel:0839837891">
-                <Phone className="w-4 h-4" /> Hotline
+                <Phone className="w-4 h-4" /> {t('nav.hotline')}
               </a>
             </Button>
             <Button variant="red" size="default" className="py-2 px-4 text-sm" asChild>
-              <Link href="/booking">Đặt Tour Ngay</Link>
+              <Link href="/booking">{t('nav.bookNow')}</Link>
             </Button>
           </div>
 
@@ -130,14 +146,31 @@ export function Navbar() {
             })}
           </div>
           
-          <div className="mt-8 flex flex-col gap-4 pb-8">
-            <Button variant="outline" className="w-full justify-center" asChild>
+          {/* Language Switcher Mobile */}
+          <div className="flex items-center justify-center gap-4 py-4 mt-4 border-t border-gray-100">
+            <button 
+              onClick={() => { setLang('vi'); toggleMobileMenu(); }} 
+              className={`font-semibold text-[15px] ${lang === 'vi' ? 'text-[var(--color-primary)]' : 'text-gray-500'}`}
+            >
+              Tiếng Việt (VI)
+            </button>
+            <span className="text-gray-300">|</span>
+            <button 
+              onClick={() => { setLang('en'); toggleMobileMenu(); }} 
+              className={`font-semibold text-[15px] ${lang === 'en' ? 'text-[var(--color-primary)]' : 'text-gray-500'}`}
+            >
+              English (EN)
+            </button>
+          </div>
+
+          <div className="mt-8 flex flex-col gap-3 pb-8">
+            <Button variant="outline" className="w-full py-6" asChild>
               <a href="tel:0839837891">
-                <Phone className="w-5 h-5" /> 0839 837 891
+                <Phone className="w-5 h-5 mr-2" /> {t('nav.hotline')}
               </a>
             </Button>
-            <Button variant="red" className="w-full justify-center" asChild>
-              <Link href="/booking">Đặt Tour Ngay</Link>
+            <Button variant="red" className="w-full py-6" onClick={toggleMobileMenu} asChild>
+              <Link href="/booking">{t('nav.bookNow')}</Link>
             </Button>
           </div>
         </div>
