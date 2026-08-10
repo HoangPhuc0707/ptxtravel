@@ -85,12 +85,6 @@ export default async function TourDetailPage({
                   <Clock className="w-4 h-4 md:w-5 md:h-5 text-gray-300" />
                   <span>{tour.duration}</span>
                 </div>
-                <div className="text-white/50">|</div>
-                <div className="flex items-center gap-1.5 text-yellow-400">
-                  <Star className="w-4 h-4 md:w-5 md:h-5 fill-current" />
-                  <span className="font-bold">{tour.rating}</span>
-                  <span className="text-gray-300 font-normal">({tour.reviews} đánh giá)</span>
-                </div>
               </div>
           </div>
         </div>

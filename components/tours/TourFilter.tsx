@@ -55,7 +55,6 @@ export function TourFilter({ currentCategory, currentSort }: { currentCategory: 
           <option value="default">Mặc định</option>
           <option value="price-asc">Giá: Thấp đến Cao</option>
           <option value="price-desc">Giá: Cao đến Thấp</option>
-          <option value="rating">Đánh giá cao nhất</option>
         </select>
       </div>
     </div>

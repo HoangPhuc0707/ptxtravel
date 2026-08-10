@@ -66,19 +66,11 @@ export function TourCard({ tour }: TourCardProps) {
           </div>
         </div>
         
-        <Link href={`/tours/${tour.slug}`}>
-          <h3 className="font-heading font-bold text-xl text-gray-900 leading-snug mb-3 group-hover:text-[var(--color-primary)] transition-colors line-clamp-2">
+        <Link href={`/tours/${tour.slug}`} className="block mt-2 mb-4">
+          <h3 className="font-heading font-bold text-xl text-gray-900 leading-snug group-hover:text-[var(--color-primary)] transition-colors line-clamp-2">
             {tour.title}
           </h3>
         </Link>
-        
-        <div className="flex items-center gap-1 mb-4">
-          <div className="flex items-center text-amber-500">
-            <Star className="w-4 h-4 fill-current" />
-          </div>
-          <span className="font-semibold text-gray-900 ml-1">{tour.rating.toFixed(1)}</span>
-          <span className="text-gray-500 text-sm">({tour.reviews} đánh giá)</span>
-        </div>
         
         <div className="mt-auto pt-4 border-t border-gray-100 flex items-end justify-between">
           <div className="flex flex-col">

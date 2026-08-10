@@ -8,13 +8,12 @@ interface TourTabsProps {
 }
 
 export function TourTabs({ tour }: TourTabsProps) {
-  const [activeTab, setActiveTab] = useState<'itinerary' | 'includes' | 'notes' | 'reviews'>('itinerary');
+  const [activeTab, setActiveTab] = useState<'itinerary' | 'includes' | 'notes'>('itinerary');
 
   const tabs = [
     { id: 'itinerary', label: 'Lịch Trình', icon: '🗓️' },
     { id: 'includes', label: 'Bao Gồm', icon: '✅' },
     { id: 'notes', label: 'Lưu Ý', icon: '📌' },
-    { id: 'reviews', label: 'Đánh Giá', icon: '⭐' },
   ] as const;
 
   return (
@@ -123,45 +122,6 @@ export function TourTabs({ tour }: TourTabsProps) {
               <li>Lịch trình có thể thay đổi tùy theo tình hình thời tiết và giao thông thực tế.</li>
               <li>Công ty sẽ không chịu trách nhiệm bồi thường nếu quý khách vi phạm pháp luật tại điểm đến.</li>
             </ul>
-          </div>
-        )}
-
-        {/* Đánh Giá */}
-        {activeTab === 'reviews' && (
-          <div className="animate-in fade-in slide-in-from-bottom-2 duration-300">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="text-4xl font-black text-amber-500">{tour.rating}</div>
-              <div>
-                <div className="flex items-center text-amber-500 mb-1">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} className={`w-5 h-5 ${i < Math.floor(tour.rating) ? 'fill-current' : 'text-gray-300 fill-current'}`} viewBox="0 0 24 24">
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                    </svg>
-                  ))}
-                </div>
-                <div className="text-sm text-gray-500">Dựa trên {tour.reviews} đánh giá</div>
-              </div>
-            </div>
-            
-            {/* Fake Reviews for Demo */}
-            <div className="space-y-6">
-              {[1, 2].map(i => (
-                <div key={i} className="border-b border-gray-100 pb-6">
-                  <div className="flex items-center justify-between mb-2">
-                    <div className="font-bold text-gray-900">Người dùng {i}</div>
-                    <div className="text-xs text-gray-400">12/10/2025</div>
-                  </div>
-                  <div className="flex items-center text-amber-500 mb-2">
-                     {[...Array(5)].map((_, j) => (
-                      <svg key={j} className="w-3 h-3 fill-current" viewBox="0 0 24 24">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                      </svg>
-                    ))}
-                  </div>
-                  <p className="text-gray-600 text-sm">Chuyến đi tuyệt vời, hướng dẫn viên nhiệt tình. Khách sạn sạch sẽ và đồ ăn ngon. Chắc chắn sẽ ủng hộ công ty trong những chuyến đi tiếp theo!</p>
-                </div>
-              ))}
-            </div>
           </div>
         )}
       </div>
