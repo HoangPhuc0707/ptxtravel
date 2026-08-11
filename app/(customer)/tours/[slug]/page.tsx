@@ -22,6 +22,25 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: tour.title,
     description: tour.description || `Khám phá tour ${tour.title} cùng PTX Travel.`,
+    openGraph: {
+      title: tour.title,
+      description: tour.description || `Khám phá tour ${tour.title} cùng PTX Travel.`,
+      url: `https://ptxtravel.com/tours/${slug}`,
+      images: [
+        {
+          url: tour.image || '/assets/tour_halong.png',
+          width: 800,
+          height: 600,
+          alt: tour.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: tour.title,
+      description: tour.description || `Khám phá tour ${tour.title} cùng PTX Travel.`,
+      images: [tour.image || '/assets/tour_halong.png'],
+    },
   };
 }
 

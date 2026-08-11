@@ -13,9 +13,32 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const blogs = await getBlogs();
   const blog = blogs.find(b => b.slug === slug);
   if (!blog) return { title: 'Bài viết không tồn tại' };
+  
   return {
     title: `${blog.title} | PTX Travel Blog`,
     description: blog.excerpt,
+    openGraph: {
+      title: `${blog.title} | PTX Travel Blog`,
+      description: blog.excerpt,
+      url: `https://ptxtravel.com/blog/${slug}`,
+      images: [
+        {
+          url: blog.image || '/assets/tour_halong.png',
+          width: 800,
+          height: 600,
+          alt: blog.title,
+        },
+      ],
+      type: 'article',
+      publishedTime: blog.date,
+      authors: [blog.author],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${blog.title} | PTX Travel Blog`,
+      description: blog.excerpt,
+      images: [blog.image || '/assets/tour_halong.png'],
+    },
   };
 }
 

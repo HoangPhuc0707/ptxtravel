@@ -13,11 +13,34 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://ptxtravel.com'),
   title: {
     template: '%s | PTX Travel',
     default: 'PTX Travel | Khám phá thế giới cùng bạn',
   },
   description: "Chuyên cung cấp tour du lịch trong nước và quốc tế, mang đến dịch vụ chuyên nghiệp, tận tâm và những trải nghiệm đáng nhớ cho mỗi hành trình.",
+  openGraph: {
+    title: 'PTX Travel | Khám phá thế giới cùng bạn',
+    description: 'Chuyên cung cấp tour du lịch trong nước và quốc tế, mang đến dịch vụ chuyên nghiệp, tận tâm và những trải nghiệm đáng nhớ cho mỗi hành trình.',
+    url: 'https://ptxtravel.com',
+    siteName: 'PTX Travel',
+    images: [
+      {
+        url: '/assets/tour_halong.png',
+        width: 1200,
+        height: 630,
+        alt: 'PTX Travel',
+      },
+    ],
+    locale: 'vi_VN',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'PTX Travel | Khám phá thế giới cùng bạn',
+    description: 'Chuyên cung cấp tour du lịch trong nước và quốc tế, mang đến dịch vụ chuyên nghiệp, tận tâm và những trải nghiệm đáng nhớ cho mỗi hành trình.',
+    images: ['/assets/tour_halong.png'],
+  },
 };
 
 export default function RootLayout({
