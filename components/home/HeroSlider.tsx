@@ -41,11 +41,11 @@ export function HeroSlider() {
               alt={SLIDES[currentSlide].alt}
               fill
               priority
-              className="object-cover"
+              className="object-cover brightness-110"
             />
           </motion.div>
         </AnimatePresence>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80 z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60 z-10"></div>
       </div>
 
       {/* Content */}
