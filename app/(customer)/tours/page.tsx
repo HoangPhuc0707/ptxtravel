@@ -37,10 +37,10 @@ export default async function ToursPage({
       <div className="bg-slate-900 pt-24 pb-16 text-center text-white">
         <div className="container mx-auto px-4">
           <h1 className="font-heading font-bold text-4xl md:text-5xl mb-4">
-            Khám Phá Các <span className="text-[var(--color-primary)]">Tours</span>
+            Khám phá các <span className="text-[var(--color-primary)]">Tour</span>
           </h1>
           <p className="text-slate-300 max-w-2xl mx-auto">
-            Hàng ngàn chuyến đi thú vị đang chờ đón bạn. Lựa chọn hành trình phù hợp nhất và bắt đầu chuyến đi trong mơ của bạn ngay hôm nay.
+            Khám phá những điểm đến hấp dẫn và lựa chọn hành trình phù hợp với bạn. Cùng PTX Travel bắt đầu chuyến đi ngay hôm nay.
           </p>
         </div>
       </div>

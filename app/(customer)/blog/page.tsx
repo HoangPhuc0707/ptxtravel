@@ -5,7 +5,7 @@ import { Metadata } from 'next';
 import BlogListClient from './BlogListClient';
 
 export const metadata: Metadata = {
-  title: 'Blog Du Lịch | PTX Travel',
+  title: 'Blog du lịch | PTX Travel',
   description: 'Cẩm nang du lịch, kinh nghiệm, và những câu chuyện thú vị trên những chuyến đi.',
 };
 

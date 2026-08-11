@@ -59,7 +59,7 @@ export default function BlogListClient({ blogs }: { blogs: any[] }) {
             📝 Cẩm nang du lịch
           </span>
           <h1 className="font-heading font-bold text-4xl md:text-5xl mb-4 leading-tight">
-            Blog <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-cyan-300">Du Lịch</span>
+            Blog <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-cyan-300">du lịch</span>
           </h1>
           <p className="text-slate-300 max-w-2xl mx-auto text-lg">
             Khám phá những câu chuyện thú vị, kinh nghiệm hữu ích và thông tin mới nhất về các điểm đến trên toàn thế giới.

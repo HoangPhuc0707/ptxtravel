@@ -33,8 +33,8 @@ export default async function DestinationsPage() {
         </div>
         <div className="container mx-auto px-4 relative z-10">
           <h1 className="font-heading font-black text-5xl md:text-6xl mb-6 tracking-tight drop-shadow-lg leading-tight">
-            Những Điểm Đến <br className="hidden md:block" />
-            <span className="text-[var(--color-primary)]">Không Thể Bỏ Lỡ</span>
+            Điểm đến <br className="hidden md:block" />
+            <span className="text-[var(--color-primary)]">không thể bỏ lỡ</span>
           </h1>
           <p className="text-slate-200 max-w-2xl mx-auto text-lg md:text-xl font-medium drop-shadow">
             Khám phá những điểm đến nổi bật, mới lạ và đầy cảm hứng cùng PTX Travel. Mỗi hành trình là một câu chuyện đáng nhớ.

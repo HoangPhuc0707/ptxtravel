@@ -21,8 +21,8 @@ export function BlogPreview() {
       <div className="container mx-auto px-4 md:px-6">
         <SectionHeader 
           label="Cẩm Nang Du Lịch"
-          title={<>Tin Tức & <span className="bg-clip-text text-transparent bg-[linear-gradient(135deg,var(--color-primary)_0%,#0083FF_100%)]">Kinh Nghiệm</span></>}
-          subtitle="Cập nhật những thông tin du lịch mới nhất và bí kíp hữu ích cho chuyến đi của bạn."
+          title={<>Tin tức & <span className="bg-clip-text text-transparent bg-[linear-gradient(135deg,var(--color-primary)_0%,#0083FF_100%)]">kinh nghiệm du lịch</span></>}
+          subtitle="Tìm hiểu kinh nghiệm du lịch, thông tin điểm đến, lịch trình và những lưu ý hữu ích cho các chuyến đi trong nước và quốc tế. PTX Travel chia sẻ những nội dung thiết thực giúp bạn dễ dàng lên kế hoạch và chuẩn bị cho hành trình của mình."
         />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

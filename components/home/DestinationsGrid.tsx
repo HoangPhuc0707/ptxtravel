@@ -66,7 +66,7 @@ export function DestinationsGrid() {
       <div className="container mx-auto px-4 md:px-6">
         <SectionHeader 
           label="Khám phá"
-          title={<>Điểm Đến <span className="bg-clip-text text-transparent bg-[linear-gradient(135deg,var(--color-primary)_0%,#0083FF_100%)]">Đáng Khám Phá</span></>}
+          title={<>Điểm đến <span className="bg-clip-text text-transparent bg-[linear-gradient(135deg,var(--color-primary)_0%,#0083FF_100%)]">đáng khám phá</span></>}
           subtitle="Cùng PTX Travel khám phá những điểm đến mới lạ, nổi bật và những trải nghiệm đặc biệt cho hành trình của bạn."
         />
 

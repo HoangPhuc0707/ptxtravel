@@ -31,8 +31,8 @@ export function FeaturedTours() {
       <div className="container mx-auto px-4 md:px-6">
         <SectionHeader 
           label="Tour nổi bật"
-          title={<>Những <span className="bg-clip-text text-transparent bg-[linear-gradient(135deg,var(--color-primary)_0%,#0083FF_100%)]">hành trình</span> đáng nhớ</>}
-          subtitle="Khám phá bộ sưu tập tour được yêu thích nhất từ Việt Nam đến quốc tế."
+          title={<>Những <span className="bg-clip-text text-transparent bg-[linear-gradient(135deg,var(--color-primary)_0%,#0083FF_100%)]">hành trình</span> được yêu thích</>}
+          subtitle="Khám phá những tour nổi bật với các điểm đến hấp dẫn trong nước và quốc tế. Lựa chọn hành trình phù hợp và cùng PTX Travel bắt đầu chuyến đi của bạn."
         />
 
         <div className="flex flex-wrap items-center justify-center gap-3 mb-12">

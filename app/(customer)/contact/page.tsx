@@ -67,7 +67,7 @@ export default function ContactPage() {
           <div className="lg:col-span-5">
             
             <h1 className="mt-8 text-3xl md:text-4xl font-bold font-heading text-gray-900 leading-[1.2] mb-6">
-              Bắt Đầu <span className="text-[var(--color-primary)]">Hành Trình</span><br />Của Bạn Ngay
+              Bắt đầu <span className="text-[var(--color-primary)]">hành trình</span><br />của bạn ngay
             </h1>
             
             <p className="text-gray-500 mb-10 leading-relaxed text-[15px]">
@@ -83,7 +83,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <div className="text-gray-500 text-xs font-bold uppercase tracking-wider mb-1">Địa chỉ văn phòng</div>
-                  <div className="text-gray-900 font-medium">15 Lê Quang Chiểu, phường Phú Thọ Hoà, TP.HCM</div>
+                  <div className="text-gray-900 font-medium">15 Lê Quang Chiểu, Phường Phú Thọ Hoà, TP.HCM</div>
                 </div>
               </div>
 
@@ -147,10 +147,10 @@ export default function ContactPage() {
           {/* Right Column - Form */}
           <div className="lg:col-span-7">
             <div className="bg-white rounded-[2rem] p-8 md:p-10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-gray-50 relative">
-              <h2 className="text-[26px] font-bold font-heading text-[#1a2b49] mb-3 flex items-center gap-3">
-                <span>📋</span> Đặt Tour / Yêu Cầu Tư Vấn
+              <h2 className="text-[26px] font-bold font-heading text-[#1a2b49] mb-3 flex items-center justify-center gap-3">
+                <span>📋</span> Đặt Tour / Yêu cầu tư vấn
               </h2>
-              <p className="text-gray-500 text-[15px] mb-8">Điền thông tin dưới đây và chúng tôi sẽ liên hệ bạn trong <strong className="text-gray-700">thời gian sớm nhất</strong>.</p>
+              <p className="text-gray-500 text-[15px] mb-8 text-center">Điền thông tin dưới đây và chúng tôi sẽ liên hệ bạn trong <strong className="text-gray-700">thời gian sớm nhất</strong>.</p>
 
               <form onSubmit={handleSubmit} className="flex flex-col gap-6">
                 
@@ -181,7 +181,7 @@ export default function ContactPage() {
                 </div>
 
                 <button type="submit" disabled={isSent} className={`w-full font-bold py-4 rounded-[14px] mt-2 transition-all flex items-center justify-center gap-2 text-lg ${isSent ? 'bg-green-500 hover:bg-green-600 text-white shadow-[0_8px_20px_-6px_rgba(34,197,94,0.6)]' : 'bg-[#f43f5e] hover:bg-[#e11d48] text-white shadow-[0_10px_25px_-8px_rgba(244,63,94,0.6)] hover:-translate-y-1'}`}>
-                  {isSent ? '✓ Đã Gửi Thành Công' : <>🚀 Gửi Yêu Cầu Đặt Tour</>}
+                  {isSent ? '✓ Đã Gửi Thành Công' : <>🚀 Gửi yêu cầu ngay</>}
                 </button>
 
                 <div className="text-center mt-3 flex items-center justify-center gap-2 text-gray-500 text-xs">

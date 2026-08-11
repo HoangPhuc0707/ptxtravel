@@ -7,28 +7,28 @@ type Language = 'vi' | 'en';
 const dictionary = {
   vi: {
     // Navbar
-    'nav.about': 'Về Chúng Tôi',
+    'nav.about': 'Về chúng tôi',
     'nav.tours': 'Tất cả Tour',
     'nav.destinations': 'Điểm đến',
     'nav.blog': 'Blog',
     'nav.contact': 'Liên hệ',
     'nav.hotline': 'Hotline',
-    'nav.bookNow': 'Đặt Tour Ngay',
+    'nav.bookNow': 'Đặt tour ngay',
     
     // Footer
     'footer.description': 'Chuyên cung cấp tour du lịch trong nước và quốc tế, mang đến dịch vụ chuyên nghiệp, tận tâm và những trải nghiệm đáng nhớ.',
-    'footer.aboutUs': 'Về Chúng Tôi',
+    'footer.aboutUs': 'Về chúng tôi',
     'footer.home': 'Trang chủ',
     'footer.aboutPTX': 'Về PTX Travel',
-    'footer.tours': 'Các Tour Du Lịch',
-    'footer.news': 'Tin Tức & Blog',
-    'footer.quickLinks': 'Liên Kết Nhanh',
-    'footer.popularDestinations': 'Điểm Đến Phổ Biến',
+    'footer.tours': 'Các Tour du lịch',
+    'footer.news': 'Tin tức & Blog',
+    'footer.quickLinks': 'Liên kết nhanh',
+    'footer.popularDestinations': 'Điểm đến phổ biến',
     'footer.newsletter': 'Đăng ký nhận tin',
     'footer.privacy': 'Chính sách bảo mật',
     'footer.terms': 'Điều khoản dịch vụ',
-    'footer.contact': 'Liên Hệ',
-    'footer.address': '15 Lê Quang Chiểu, phường Phú Thọ Hoà, TP.HCM',
+    'footer.contact': 'Liên hệ',
+    'footer.address': '15 Lê Quang Chiểu, Phường Phú Thọ Hoà, TP.HCM',
     
     'footer.services': 'Dịch vụ',
     'footer.newsletterTitle': 'Đăng ký nhận ưu đãi',

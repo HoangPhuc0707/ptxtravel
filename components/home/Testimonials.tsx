@@ -35,7 +35,7 @@ export function Testimonials() {
       <div className="container mx-auto px-4 md:px-6">
         <SectionHeader 
           label="Đánh giá"
-          title={<>Cảm nhận của Khách hàng về <span className="bg-clip-text text-transparent bg-[linear-gradient(135deg,var(--color-primary)_0%,#0083FF_100%)]">PTX Travel</span></>}
+          title={<>Cảm nhận của khách hàng về <span className="bg-clip-text text-transparent bg-[linear-gradient(135deg,var(--color-primary)_0%,#0083FF_100%)]">PTX Travel</span></>}
           subtitle="Hơn 15,000+ khách hàng đã tin tưởng và đồng hành cùng chúng tôi trên những chuyến đi."
         />
 
